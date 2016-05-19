@@ -88,6 +88,8 @@ namespace DataMovementAnalyzer
                 objRowCounts = objSqlDB.getAllRowCounts(false);
                 objAllTablesPane = zgcAllTables.GraphPane;
 
+                objAllTablesPane.YAxis.Type = AxisType.Log;
+
                 DateTime dtNow = DateTime.Now;
 
                 for (int i = 0; i < 5; i++)
