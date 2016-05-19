@@ -1,0 +1,6 @@
+{
+  "name": "Data Movement Analyzer",
+  "tagline": "Visualize data movement into and out of your database",
+  "body": "# Data Movement Analyzer\r\n## About\r\nThis tool is used to view the speed at which data is being added to or deleted from a database. Currently, this only supports SQL Server databases, but will likely be expanded to support others as well.\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
