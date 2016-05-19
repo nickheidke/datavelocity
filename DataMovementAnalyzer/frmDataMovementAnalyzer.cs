@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Microsoft.Data.ConnectionUI;
 using ZedGraph;
 using System.IO;
+using DataAccess;
 
 namespace DataMovementAnalyzer
 {
@@ -24,6 +25,7 @@ namespace DataMovementAnalyzer
         public int iPollingFrequency = 10;
         RollingPointPairList objTotalRowsPairList, objRPSPairList;
         GraphPane objTotalRowsPane, objRPSPane, objAllTablesPane;
+        SqlServerDB objSqlDB;
         
         private static string QUERY_FILE_PATH = "App_Data\\Query.txt";
 
@@ -45,7 +47,9 @@ namespace DataMovementAnalyzer
                 bRunCustomQuery = false;
             }
 
-            txtDBName.Text = new SqlConnection(strConnectionString).Database;
+            objSqlDB = new SqlServerDB(strConnectionString);
+
+            txtDBName.Text = objSqlDB.getDatabase();
 
             _clearAllStats();
 
@@ -76,7 +80,7 @@ namespace DataMovementAnalyzer
                 iPreviousRows = iCurrentRows;
                 iCurrentRows = _getTotalRowCount();
 
-                objRowCounts = _getAllRowCounts(false);
+                objRowCounts = objSqlDB.getAllRowCounts(false);
                 objAllTablesPane = zgcAllTables.GraphPane;
 
                 DateTime dtNow = DateTime.Now;
@@ -177,7 +181,7 @@ namespace DataMovementAnalyzer
             resetToolStripMenuItem.Enabled = false;
             preferencesToolStripMenuItem.Enabled = false;
 
-            DataTable dt = _getAllRowCounts(false);
+            DataTable dt = objSqlDB.getAllRowCounts(false);
             for (int i = 0; i < 5; i++)
             {
                 DataRow row = dt.Rows[i];
@@ -342,6 +346,11 @@ namespace DataMovementAnalyzer
             SqlDataReader objReader;
             SqlConnection connection = new SqlConnection(strConnectionString);
 
+            if (string.IsNullOrEmpty(sSQL))
+            {
+                throw new ApplicationException("Custom query set to run, but no custom query present. Either disable custom query in the options or enter one on the Custom Query tab.");
+            }
+
             connection.Open();
 
             sSQL = txtCustomQuery.Text;
@@ -355,49 +364,7 @@ namespace DataMovementAnalyzer
             return objResult;
         }
 
-        private DataTable _getAllRowCounts(bool blnIncludeZeros)
-        {
-            DataTable objResult;
-            string sSQL = "";
-            SqlDataReader objReader;
-            SqlConnection connection = new SqlConnection(strConnectionString);
-
-            connection.Open();
-
-            if (blnIncludeZeros){
-                sSQL = "SELECT sc.name +'.'+ ta.name TableName " + 
-                                ",SUM(pa.rows) RowCnt " +
-                                "FROM sys.tables ta "+
-                                "INNER JOIN sys.partitions pa " +
-                                "ON pa.OBJECT_ID = ta.OBJECT_ID " +
-                                "INNER JOIN sys.schemas sc " +
-                                "ON ta.schema_id = sc.schema_id " +
-                                "WHERE ta.is_ms_shipped = 0 AND pa.index_id IN (1,0) " +
-                                "GROUP BY sc.name,ta.name " +
-                                "ORDER BY SUM(pa.rows) DESC";
-            } else {
-                sSQL = "SELECT sc.name +'.'+ ta.name TableName " + 
-                                ",SUM(pa.rows) RowCnt " +
-                                "FROM sys.tables ta "+
-                                "INNER JOIN sys.partitions pa " +
-                                "ON pa.OBJECT_ID = ta.OBJECT_ID " +
-                                "INNER JOIN sys.schemas sc " +
-                                "ON ta.schema_id = sc.schema_id " +
-                                "WHERE ta.is_ms_shipped = 0 AND pa.index_id IN (1,0) " +
-                                "GROUP BY sc.name,ta.name " +
-                                "HAVING SUM(pa.Rows) > 0 " +
-                                "ORDER BY SUM(pa.rows) DESC";
-
-            }
-
-            SqlCommand command = new SqlCommand(sSQL, connection);
-
-            objReader = command.ExecuteReader(CommandBehavior.CloseConnection);
-            objResult = new DataTable();
-            objResult.Load(objReader);
-
-            return objResult;
-        }
+        
 
         private void _editConnection()
         {

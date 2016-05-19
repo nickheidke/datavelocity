@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Data Movement Analyzer")]
-[assembly: AssemblyDescription("A tool to dynamically view the movement of data into a database.")]
+[assembly: AssemblyTitle("DataAccess")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("CUNA Mutual Group")]
-[assembly: AssemblyProduct("Data Movement Analyzer")]
-[assembly: AssemblyCopyright("Copyright © CUNA Mutual Group 2015")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("DataAccess")]
+[assembly: AssemblyCopyright("Copyright © Microsoft 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("95a4c8b7-e432-407d-802a-b6741e0fe122")]
+[assembly: Guid("017d4c36-bb61-4347-a9b1-ee3e89d34a48")]
 
 // Version information for an assembly consists of the following four values:
 //
