@@ -8,24 +8,23 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class SqlServerDB
+    public class SqlServerDB : Database
     {
-        private SqlConnection _conn;
-
+        SqlConnection _conn;
         #region Constructors
-        public SqlServerDB(string connectionString)
+        public SqlServerDB(string connectionString) : base(connectionString) 
         {
-            _conn = new SqlConnection(connectionString);
+            _conn = new SqlConnection(base._connectionString);
         }
         #endregion
 
         #region Public
-        public string getDatabase()
+        override public string getDatabase()
         {
             return _conn.Database;
         }
 
-        public int getTotalRowCount()
+        override public int getTotalRowCount()
         {
             string sSQL = " SELECT SUM(pa.rows) RowCnt " +
                          "FROM sys.tables ta " +
@@ -39,7 +38,7 @@ namespace DataAccess
 
         }
 
-        public DataTable getAllRowCounts(bool blnIncludeZeros)
+        override public DataTable getAllRowCounts(bool blnIncludeZeros)
         {
             string sSQL;
             if (blnIncludeZeros)
@@ -74,14 +73,14 @@ namespace DataAccess
             return _getDataTable(sSQL);
         }
 
-        public DataTable getCustomResults(string sql)
+        override public DataTable getCustomResults(string sql)
         {
             return _getDataTable(sql);
         }
         #endregion
 
         #region Private
-        private int _getScalar(string sql)
+        override protected int _getScalar(string sql)
         {
             int iResult;
 
@@ -97,7 +96,7 @@ namespace DataAccess
         }
 
 
-        private DataTable _getDataTable(string sql)
+        override protected DataTable _getDataTable(string sql)
         {
             DataTable objResult;
             string sSQL = "";
@@ -114,5 +113,6 @@ namespace DataAccess
             return objResult;
         }
         #endregion
+        
     }
 }

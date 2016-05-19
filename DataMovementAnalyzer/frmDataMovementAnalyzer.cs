@@ -25,7 +25,7 @@ namespace DataMovementAnalyzer
         public int iPollingFrequency = 10;
         RollingPointPairList objTotalRowsPairList, objRPSPairList;
         GraphPane objTotalRowsPane, objRPSPane, objAllTablesPane;
-        SqlServerDB objSqlDB;
+        Database objSqlDB;
         
         private static string QUERY_FILE_PATH = "App_Data\\Query.txt";
 
@@ -352,6 +352,8 @@ namespace DataMovementAnalyzer
                 config.Save(ConfigurationSaveMode.Modified, true);
                 ConfigurationManager.RefreshSection("connectionStrings");
             }
+
+            objSqlDB = new SqlServerDB(strConnectionString);
         }
 
         private Color _randomColorForInt(int i)
