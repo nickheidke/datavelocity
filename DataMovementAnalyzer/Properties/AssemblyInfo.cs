@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Data Movement Analyzer")]
 [assembly: AssemblyDescription("A tool to dynamically view the movement of data into a database.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("CUNA Mutual Group")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Data Movement Analyzer")]
-[assembly: AssemblyCopyright("Copyright © CUNA Mutual Group 2015")]
+[assembly: AssemblyCopyright("Copyright © 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("0.9.1.*")]
+[assembly: AssemblyFileVersion("0.9.1.*")]
