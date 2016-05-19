@@ -51,6 +51,11 @@ namespace DataMovementAnalyzer
 
             txtDBName.Text = objSqlDB.getDatabase();
 
+            if (!File.Exists(QUERY_FILE_PATH))
+            {
+                File.Create(QUERY_FILE_PATH);
+            }
+
             _clearAllStats();
 
             _loadQueryFile();
@@ -67,7 +72,7 @@ namespace DataMovementAnalyzer
                 DataTable objRowCounts;
                 if (iTickNumber == 1)
                 {
-                    iInitialRows = _getTotalRowCount();
+                    iInitialRows = objSqlDB.getTotalRowCount();
 
                     iPreviousRows = iInitialRows;
 
@@ -78,7 +83,7 @@ namespace DataMovementAnalyzer
                 iTotalTime += iPollingFrequency;
 
                 iPreviousRows = iCurrentRows;
-                iCurrentRows = _getTotalRowCount();
+                iCurrentRows = objSqlDB.getTotalRowCount();
 
                 objRowCounts = objSqlDB.getAllRowCounts(false);
                 objAllTablesPane = zgcAllTables.GraphPane;
@@ -316,52 +321,20 @@ namespace DataMovementAnalyzer
         }
 
 
-        private int _getTotalRowCount()
-        {
-            int iResult;
-            SqlConnection connection = new SqlConnection(strConnectionString);
-
-            connection.Open();
-
-            string sSQL = " SELECT SUM(pa.rows) RowCnt " +
-                        "FROM sys.tables ta " +
-                        "INNER JOIN sys.partitions pa " +
-                        "ON pa.OBJECT_ID = ta.OBJECT_ID " +
-                        "INNER JOIN sys.schemas sc " +
-                        "ON ta.schema_id = sc.schema_id " +
-                        "WHERE ta.is_ms_shipped = 0 AND pa.index_id IN (1,0);";
-
-            SqlCommand command = new SqlCommand(sSQL, connection);
-
-            iResult = int.Parse(command.ExecuteScalar().ToString());
-            connection.Close();
-
-            return iResult;
-        }
+        
 
         private DataTable _getCustomQueryResults()
         {
-            DataTable objResult;
             string sSQL = "";
-            SqlDataReader objReader;
-            SqlConnection connection = new SqlConnection(strConnectionString);
 
             if (string.IsNullOrEmpty(sSQL))
             {
                 throw new ApplicationException("Custom query set to run, but no custom query present. Either disable custom query in the options or enter one on the Custom Query tab.");
             }
 
-            connection.Open();
-
             sSQL = txtCustomQuery.Text;
 
-            SqlCommand command = new SqlCommand(sSQL, connection);
-
-            objReader = command.ExecuteReader(CommandBehavior.CloseConnection);
-            objResult = new DataTable();
-            objResult.Load(objReader);
-
-            return objResult;
+            return objSqlDB.getCustomResults(sSQL); ;
         }
 
         
@@ -412,7 +385,12 @@ namespace DataMovementAnalyzer
         {
             try
             {
+
                 txtCustomQuery.LoadFile(QUERY_FILE_PATH, RichTextBoxStreamType.RichText);
+            }
+            catch (ArgumentException aex)
+            {
+                txtCustomQuery.LoadFile(QUERY_FILE_PATH, RichTextBoxStreamType.PlainText);
             }
             catch (Exception ex)
             {
