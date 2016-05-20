@@ -185,7 +185,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\dmaDataAccess.csproj">
+    <ProjectReference Include="..\dmaDataAccess\dmaDataAccess.csproj">
       <Project>{327f5434-05b7-4223-b27a-61a15c2bc9ac}</Project>
       <Name>dmaDataAccess</Name>
     </ProjectReference>
