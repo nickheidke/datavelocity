@@ -11,6 +11,7 @@ namespace DataAccess
     public class SqlServerDB : Database
     {
         SqlConnection _conn;
+
         #region Constructors
         public SqlServerDB(string connectionString) : base(connectionString) 
         {
@@ -19,9 +20,9 @@ namespace DataAccess
         #endregion
 
         #region Public
-        override public string getDatabase()
+        override public string DbName
         {
-            return _conn.Database;
+            get { return _conn.Database; }
         }
 
         override public int getTotalRowCount()

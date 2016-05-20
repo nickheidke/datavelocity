@@ -22,7 +22,7 @@ namespace DataMovementAnalyzer
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Exception thrown: " + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Exception thrown: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
             }
             
         }

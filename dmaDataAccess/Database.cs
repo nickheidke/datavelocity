@@ -15,12 +15,10 @@ namespace DataAccess
         protected string _connectionString;
         bool _disposed = false;
         SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
-        private SqlConnection _conn;
 
-        public Database(string connectionString)
+        protected Database(string connectionString)
         {
             _connectionString = connectionString;
-            _conn = new SqlConnection(connectionString);
         }
 
         public void Dispose() 
@@ -39,11 +37,13 @@ namespace DataAccess
                 _connectionString = null;
             }
 
-            _conn = null;
             _disposed = true;
         }
 
-        abstract public string getDatabase();
+        abstract public string DbName
+        {
+            get;
+        }
         abstract public int getTotalRowCount();
         abstract public DataTable getAllRowCounts(bool blnIncludeZeros);
         abstract public DataTable getCustomResults(string sql);

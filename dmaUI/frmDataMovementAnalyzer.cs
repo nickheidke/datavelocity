@@ -20,10 +20,8 @@ namespace DataMovementAnalyzer
     public partial class frmDataMovementAnalyzer : Form
     {
         private int _iCurrentRows, _iTotalTime, _iInitialRows, _iPreviousRows, _iMaxRPS, _iMaxRows, _iTickNumber, _iMinRPS, _iMinRows;
-        public int iNumberOfPoints;
         public bool bRunCustomQuery;
         private string _strConnectionString;
-        public int iPollingFrequency = 10;
         dmaPreferences _objPrefs;
 
         
@@ -39,9 +37,6 @@ namespace DataMovementAnalyzer
 
             _strConnectionString = ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString;
 
-            iNumberOfPoints = int.Parse(ConfigurationManager.AppSettings["NumberOfPoints"]);
-            iPollingFrequency = int.Parse(ConfigurationManager.AppSettings["PollingFrequency"]);
-
             try
             {
                 bRunCustomQuery = bool.Parse(ConfigurationManager.AppSettings["RunCustomQuery"]);
@@ -53,7 +48,7 @@ namespace DataMovementAnalyzer
 
             objSqlDB = new SqlServerDB(_strConnectionString);
 
-            txtDBName.Text = objSqlDB.getDatabase();
+            txtDBName.Text = objSqlDB.DbName;
 
             if (!File.Exists(QUERY_FILE_PATH))
             {
@@ -94,7 +89,7 @@ namespace DataMovementAnalyzer
                 }
 
                 int iCurrentRowsPerSecond = 0;
-                _iTotalTime += iPollingFrequency;
+                _iTotalTime += _objPrefs.iPollingFrequency;
 
                 _iPreviousRows = _iCurrentRows;
                 _iCurrentRows = objSqlDB.getTotalRowCount();
@@ -115,7 +110,7 @@ namespace DataMovementAnalyzer
                     }
                     else
                     {
-                        objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(iNumberOfPoints), Color.Red, SymbolType.Default); ;
+                        objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(_objPrefs.iNumberofPoints), Color.Red, SymbolType.Default); ;
                         ci = objAllTablesPane.CurveList.Find(x => x.Label.Text == row["TableName"].ToString());
                         ci.AddPoint((double)new XDate(dtNow), Int32.Parse(row["RowCnt"].ToString()));
                     }
@@ -133,7 +128,7 @@ namespace DataMovementAnalyzer
 
                 lblRowCount.Text = String.Format("Current Row Count: {0}", _iCurrentRows.ToString("N0"));
 
-                iCurrentRowsPerSecond = (_iCurrentRows - _iPreviousRows) / iPollingFrequency;
+                iCurrentRowsPerSecond = (_iCurrentRows - _iPreviousRows) / _objPrefs.iPollingFrequency;
                 objRPSPairList.Add((double)new XDate(dtNow), iCurrentRowsPerSecond);
 
                 lblRPS.Text = String.Format("Current Rows/sec: {0}", iCurrentRowsPerSecond.ToString("N0"));
@@ -194,7 +189,7 @@ namespace DataMovementAnalyzer
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(objSqlDB.getDatabase()))
+            if (string.IsNullOrEmpty(objSqlDB.DbName))
             {
                 displayError("Database connection not set.");
             }
@@ -211,12 +206,7 @@ namespace DataMovementAnalyzer
                 {
                     DataRow row = dt.Rows[i];
 
-                    Random randomGen = new Random();
-                    KnownColor[] names = (KnownColor[])Enum.GetValues(typeof(KnownColor));
-                    KnownColor randomColorName = names[randomGen.Next(names.Length)];
-                    Color randomColor = Color.FromKnownColor(randomColorName);
-
-                    objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(iNumberOfPoints), _randomColorForInt(i), SymbolType.Default); ;
+                    objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(_objPrefs.iNumberofPoints), _randomColorForInt(i), SymbolType.Default); ;
                 }
             }
         }
@@ -339,8 +329,8 @@ namespace DataMovementAnalyzer
             objAllTablesPane.CurveList.Clear();
 
             // poing pair lists
-            objTotalRowsPairList = new RollingPointPairList(iNumberOfPoints);
-            objRPSPairList = new RollingPointPairList(iNumberOfPoints);
+            objTotalRowsPairList = new RollingPointPairList(_objPrefs.iNumberofPoints);
+            objRPSPairList = new RollingPointPairList(_objPrefs.iNumberofPoints);
 
 
             objTotalRowsPane.AddCurve("Total Rows", objTotalRowsPairList, Color.Red, SymbolType.Default);
@@ -366,7 +356,7 @@ namespace DataMovementAnalyzer
         private void _clearAllStats()
         {
 
-            objTimer.Interval = iPollingFrequency * 1000;
+            objTimer.Interval = _objPrefs.iPollingFrequency * 1000;
 
             _iTickNumber = 1;
 
@@ -455,7 +445,7 @@ namespace DataMovementAnalyzer
             objSqlDB = new SqlServerDB(_strConnectionString);
         }
 
-        private Color _randomColorForInt(int i)
+        private static Color _randomColorForInt(int i)
         {
             switch(i)
             {
@@ -502,7 +492,7 @@ namespace DataMovementAnalyzer
         }
 
 
-        bool _tryGetDataConnectionStringFromUser(out string outConnectionString)
+        static bool _tryGetDataConnectionStringFromUser(out string outConnectionString)
         {
                 using (var dialog = new DataConnectionDialog())
                 {
@@ -548,12 +538,12 @@ namespace DataMovementAnalyzer
         {
             txtCustomQuery.SaveFile(QUERY_FILE_PATH, RichTextBoxStreamType.RichText);
 
-            MessageBox.Show("File Saved!");
+            MessageBox.Show("File Saved", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
         }
 
         private void displayError(string errorMessage)
         {
-            MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
         }
 
     }
