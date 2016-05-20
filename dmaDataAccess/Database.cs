@@ -45,8 +45,8 @@ namespace DataAccess
             get;
         }
         abstract public int getTotalRowCount();
-        abstract public DataTable getAllRowCounts(bool blnIncludeZeros);
-        abstract public DataTable getCustomResults(string sql);
+        abstract public DataTable getAllRowCounts(bool bIncludeZeros);
+        abstract public DataTable getCustomResults(string sQuery);
 
         #region Private
         abstract protected int _getScalar(string sql);

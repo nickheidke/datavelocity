@@ -39,10 +39,10 @@ namespace DataAccess
 
         }
 
-        override public DataTable getAllRowCounts(bool blnIncludeZeros)
+        override public DataTable getAllRowCounts(bool bIncludeZeros)
         {
             string sSQL;
-            if (blnIncludeZeros)
+            if (bIncludeZeros)
             {
                 sSQL = "SELECT sc.name +'.'+ ta.name TableName " +
                                 ",SUM(pa.rows) RowCnt " +
@@ -74,21 +74,20 @@ namespace DataAccess
             return _getDataTable(sSQL);
         }
 
-        override public DataTable getCustomResults(string sql)
+        override public DataTable getCustomResults(string sQuery)
         {
-            return _getDataTable(sql);
+            return _getDataTable(sQuery);
         }
         #endregion
 
         #region Private
-        override protected int _getScalar(string sql)
+        override protected int _getScalar(string sQuery)
         {
             int iResult;
 
             _conn.Open();
 
-
-            SqlCommand command = new SqlCommand(sql, _conn);
+            SqlCommand command = new SqlCommand(sQuery, _conn);
 
             iResult = int.Parse(command.ExecuteScalar().ToString());
             _conn.Close();
@@ -97,15 +96,14 @@ namespace DataAccess
         }
 
 
-        override protected DataTable _getDataTable(string sql)
+        override protected DataTable _getDataTable(string sQuery)
         {
             DataTable objResult;
-            string sSQL = "";
             SqlDataReader objReader;
 
             _conn.Open();
 
-            SqlCommand command = new SqlCommand(sql, _conn);
+            SqlCommand command = new SqlCommand(sQuery, _conn);
 
             objReader = command.ExecuteReader(CommandBehavior.CloseConnection);
             objResult = new DataTable();
