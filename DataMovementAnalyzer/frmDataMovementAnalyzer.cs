@@ -358,6 +358,8 @@ namespace DataMovementAnalyzer
             objAllTablesPane.XAxis.Title.Text = "Time";
             objAllTablesPane.YAxis.Title.Text = "Rows";
             objAllTablesPane.XAxis.Type = AxisType.Date;
+
+            _updateGraphs();
         }
         
 
