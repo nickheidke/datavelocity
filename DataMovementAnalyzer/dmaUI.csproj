@@ -185,9 +185,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+    <ProjectReference Include="..\DataAccess\dmaDataAccess.csproj">
       <Project>{327f5434-05b7-4223-b27a-61a15c2bc9ac}</Project>
-      <Name>DataAccess</Name>
+      <Name>dmaDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dmaModels\dmaModels.csproj">
+      <Project>{35c8a4bd-0159-4e2c-ae5b-f6f55f4720fb}</Project>
+      <Name>dmaModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

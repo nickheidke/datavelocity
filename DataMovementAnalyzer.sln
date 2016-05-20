@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataMovementAnalyzer", "DataMovementAnalyzer\DataMovementAnalyzer.csproj", "{D8D98B4D-22BD-4E20-9145-1B8992A84785}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dmaUI", "DataMovementAnalyzer\dmaUI.csproj", "{D8D98B4D-22BD-4E20-9145-1B8992A84785}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{327F5434-05B7-4223-B27A-61A15C2BC9AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dmaDataAccess", "DataAccess\dmaDataAccess.csproj", "{327F5434-05B7-4223-B27A-61A15C2BC9AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dmaModels", "dmaModels\dmaModels.csproj", "{35C8A4BD-0159-4E2C-AE5B-F6F55F4720FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +21,10 @@ Global
 		{327F5434-05B7-4223-B27A-61A15C2BC9AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{327F5434-05B7-4223-B27A-61A15C2BC9AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{327F5434-05B7-4223-B27A-61A15C2BC9AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35C8A4BD-0159-4E2C-AE5B-F6F55F4720FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35C8A4BD-0159-4E2C-AE5B-F6F55F4720FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35C8A4BD-0159-4E2C-AE5B-F6F55F4720FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35C8A4BD-0159-4E2C-AE5B-F6F55F4720FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

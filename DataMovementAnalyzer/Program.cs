@@ -16,7 +16,15 @@ namespace DataMovementAnalyzer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDataMovementAnalyzer());
+            try
+            {
+                Application.Run(new frmDataMovementAnalyzer());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception thrown: " + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }

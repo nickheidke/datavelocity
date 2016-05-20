@@ -13,16 +13,20 @@ using Microsoft.Data.ConnectionUI;
 using ZedGraph;
 using System.IO;
 using DataAccess;
+using dmaModels;
 
 namespace DataMovementAnalyzer
 {
     public partial class frmDataMovementAnalyzer : Form
     {
-        private int iCurrentRows, iTotalTime, iInitialRows, iPreviousRows, iMaxRPS, iMaxRows, iTickNumber, iMinRPS, iMinRows;
+        private int _iCurrentRows, _iTotalTime, _iInitialRows, _iPreviousRows, _iMaxRPS, _iMaxRows, _iTickNumber, _iMinRPS, _iMinRows;
         public int iNumberOfPoints;
         public bool bRunCustomQuery;
-        private string strConnectionString;
+        private string _strConnectionString;
         public int iPollingFrequency = 10;
+        dmaPreferences _objPrefs;
+
+        
         RollingPointPairList objTotalRowsPairList, objRPSPairList;
         GraphPane objTotalRowsPane, objRPSPane, objAllTablesPane;
         Database objSqlDB;
@@ -33,7 +37,7 @@ namespace DataMovementAnalyzer
         {
             InitializeComponent();
 
-            strConnectionString = ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString;
+            _strConnectionString = ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString;
 
             iNumberOfPoints = int.Parse(ConfigurationManager.AppSettings["NumberOfPoints"]);
             iPollingFrequency = int.Parse(ConfigurationManager.AppSettings["PollingFrequency"]);
@@ -47,7 +51,7 @@ namespace DataMovementAnalyzer
                 bRunCustomQuery = false;
             }
 
-            objSqlDB = new SqlServerDB(strConnectionString);
+            objSqlDB = new SqlServerDB(_strConnectionString);
 
             txtDBName.Text = objSqlDB.getDatabase();
 
@@ -56,39 +60,47 @@ namespace DataMovementAnalyzer
                 File.Create(QUERY_FILE_PATH);
             }
 
+            _objPrefs = new dmaPreferences();
+
+            _loadPrefs();
+
             _clearAllStats();
 
             _loadQueryFile();
 
-            _setupGraphs();            
+            _setupGraphs(Prefs.bTotalRowsLinear ? AxisType.Linear : AxisType.Log,
+                Prefs.bRPSScaleLinear ? AxisType.Linear : AxisType.Log,
+                Prefs.bTopColumnsScaleLinear ? AxisType.Linear : AxisType.Log);    
         }
 
-        
+        public dmaPreferences Prefs
+        {
+            get { return _objPrefs; }
+            set { _objPrefs = value; }
+        }
 
         private void objTimer_Tick(object sender, EventArgs e)
         {
             try
             {
                 DataTable objRowCounts;
-                if (iTickNumber == 1)
+                if (_iTickNumber == 1)
                 {
-                    iInitialRows = objSqlDB.getTotalRowCount();
+                    _iInitialRows = objSqlDB.getTotalRowCount();
 
-                    iPreviousRows = iInitialRows;
+                    _iPreviousRows = _iInitialRows;
 
-                    iCurrentRows = iInitialRows;
+                    _iCurrentRows = _iInitialRows;
                 }
 
                 int iCurrentRowsPerSecond = 0;
-                iTotalTime += iPollingFrequency;
+                _iTotalTime += iPollingFrequency;
 
-                iPreviousRows = iCurrentRows;
-                iCurrentRows = objSqlDB.getTotalRowCount();
+                _iPreviousRows = _iCurrentRows;
+                _iCurrentRows = objSqlDB.getTotalRowCount();
 
                 objRowCounts = objSqlDB.getAllRowCounts(false);
                 objAllTablesPane = zgcAllTables.GraphPane;
-
-                objAllTablesPane.YAxis.Type = AxisType.Log;
 
                 DateTime dtNow = DateTime.Now;
 
@@ -117,46 +129,46 @@ namespace DataMovementAnalyzer
                     dgvCustom.DataSource = _getCustomQueryResults();
                 }
 
-                objTotalRowsPairList.Add((double)new XDate(dtNow), iCurrentRows);
+                objTotalRowsPairList.Add((double)new XDate(dtNow), _iCurrentRows);
 
-                lblRowCount.Text = String.Format("Current Row Count: {0}", iCurrentRows.ToString("N0"));
+                lblRowCount.Text = String.Format("Current Row Count: {0}", _iCurrentRows.ToString("N0"));
 
-                iCurrentRowsPerSecond = (iCurrentRows - iPreviousRows) / iPollingFrequency;
+                iCurrentRowsPerSecond = (_iCurrentRows - _iPreviousRows) / iPollingFrequency;
                 objRPSPairList.Add((double)new XDate(dtNow), iCurrentRowsPerSecond);
 
                 lblRPS.Text = String.Format("Current Rows/sec: {0}", iCurrentRowsPerSecond.ToString("N0"));
 
-                if (iCurrentRowsPerSecond > iMaxRPS)
+                if (iCurrentRowsPerSecond > _iMaxRPS)
                 {
-                    iMaxRPS = iCurrentRowsPerSecond;
-                    lblMaxRPS.Text = String.Format("Max Rows/sec: {0}", iMaxRPS.ToString("N0"));
+                    _iMaxRPS = iCurrentRowsPerSecond;
+                    lblMaxRPS.Text = String.Format("Max Rows/sec: {0}", _iMaxRPS.ToString("N0"));
                 }
 
-                if (iCurrentRowsPerSecond < iMinRPS)
+                if (iCurrentRowsPerSecond < _iMinRPS)
                 {
-                    iMinRPS = iCurrentRowsPerSecond;
-                    lblMinRPS.Text = String.Format("Min Rows/sec: {0}", iMinRPS.ToString("N0"));
+                    _iMinRPS = iCurrentRowsPerSecond;
+                    lblMinRPS.Text = String.Format("Min Rows/sec: {0}", _iMinRPS.ToString("N0"));
                 }
 
-                if (iCurrentRows > iMaxRows)
+                if (_iCurrentRows > _iMaxRows)
                 {
-                    iMaxRows = iCurrentRows;
-                    lblMaxRowCount.Text = String.Format("Max Row Count: {0}", iMaxRows.ToString("N0"));
+                    _iMaxRows = _iCurrentRows;
+                    lblMaxRowCount.Text = String.Format("Max Row Count: {0}", _iMaxRows.ToString("N0"));
                 }
 
-                if (iCurrentRows < iMinRows)
+                if (_iCurrentRows < _iMinRows)
                 {
-                    iMinRows = iCurrentRows;
-                    lblMinRowCount.Text = String.Format("Min Row Count: {0}", iMinRows.ToString("N0"));
+                    _iMinRows = _iCurrentRows;
+                    lblMinRowCount.Text = String.Format("Min Row Count: {0}", _iMinRows.ToString("N0"));
                 }
 
-                iTickNumber++;
+                _iTickNumber++;
                 _updateGraphs();
             }
             catch (Exception ex)
             {
                 objTimer.Stop();
-                MessageBox.Show("Exception thrown: " + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                displayError("Exception thrown: " + ex.Message);
             }            
         }
 
@@ -182,23 +194,30 @@ namespace DataMovementAnalyzer
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            objTimer.Start();
-            stopToolStripMenuItem.Enabled = true;
-            startToolStripMenuItem.Enabled = false;
-            resetToolStripMenuItem.Enabled = false;
-            preferencesToolStripMenuItem.Enabled = false;
-
-            DataTable dt = objSqlDB.getAllRowCounts(false);
-            for (int i = 0; i < 5; i++)
+            if (string.IsNullOrEmpty(objSqlDB.getDatabase()))
             {
-                DataRow row = dt.Rows[i];
+                displayError("Database connection not set.");
+            }
+            else
+            {
+                objTimer.Start();
+                stopToolStripMenuItem.Enabled = true;
+                startToolStripMenuItem.Enabled = false;
+                resetToolStripMenuItem.Enabled = false;
+                preferencesToolStripMenuItem.Enabled = false;
 
-                Random randomGen = new Random();
-                KnownColor[] names = (KnownColor[])Enum.GetValues(typeof(KnownColor));
-                KnownColor randomColorName = names[randomGen.Next(names.Length)];
-                Color randomColor = Color.FromKnownColor(randomColorName);
+                DataTable dt = objSqlDB.getAllRowCounts(false);
+                for (int i = 0; i < 5; i++)
+                {
+                    DataRow row = dt.Rows[i];
 
-                objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(iNumberOfPoints), _randomColorForInt(i), SymbolType.Default); ;
+                    Random randomGen = new Random();
+                    KnownColor[] names = (KnownColor[])Enum.GetValues(typeof(KnownColor));
+                    KnownColor randomColorName = names[randomGen.Next(names.Length)];
+                    Color randomColor = Color.FromKnownColor(randomColorName);
+
+                    objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(iNumberOfPoints), _randomColorForInt(i), SymbolType.Default); ;
+                }
             }
         }
 
@@ -210,18 +229,90 @@ namespace DataMovementAnalyzer
         public void saveConfig()
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.AppSettings.Settings["NumberOfPoints"].Value = iNumberOfPoints.ToString();
-            config.AppSettings.Settings["PollingFrequency"].Value = iPollingFrequency.ToString();
-            config.AppSettings.Settings["RunCustomQuery"].Value = bRunCustomQuery.ToString();
+            config.AppSettings.Settings["NumberOfPoints"].Value = Prefs.iNumberofPoints.ToString();
+            config.AppSettings.Settings["PollingFrequency"].Value = Prefs.iPollingFrequency.ToString();
+            config.AppSettings.Settings["RunCustomQuery"].Value = Prefs.bCustomQuery.ToString();
+
+            if (Prefs.bTotalRowsLinear)
+            {
+                config.AppSettings.Settings["TotalRowsScale"].Value = "Linear";
+            }
+            else if (Prefs.bTotalRowsLog)
+            {
+                config.AppSettings.Settings["TotalRowsScale"].Value = "Log";
+            }
+
+            if (Prefs.bRPSScaleLinear)
+            {
+                config.AppSettings.Settings["RPSScale"].Value = "Linear";
+            }
+            else if (Prefs.bRPSScaleLog)
+            {
+                config.AppSettings.Settings["RPSScale"].Value = "Log";
+            }
+
+            if (Prefs.bTopColumnsScaleLinear)
+            {
+                config.AppSettings.Settings["TopColumnsScale"].Value = "Linear";
+            }
+            else if (Prefs.bTopColumnsScaleLog)
+            {
+                config.AppSettings.Settings["TopColumnsScale"].Value = "Log";
+            }
+
             config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("appSettings");
 
             _clearAllStats();
-            _setupGraphs();
+            _setupGraphs(Prefs.bTotalRowsLinear ? AxisType.Linear : AxisType.Log,
+                Prefs.bRPSScaleLinear ? AxisType.Linear : AxisType.Log, 
+                Prefs.bTopColumnsScaleLinear ? AxisType.Linear : AxisType.Log);
             
         }
 
-        private void _setupGraphs()
+        private void _loadPrefs()
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            Prefs.iNumberofPoints = int.Parse(config.AppSettings.Settings["NumberOfPoints"].Value);
+            Prefs.iPollingFrequency = int.Parse(config.AppSettings.Settings["PollingFrequency"].Value);
+            Prefs.bCustomQuery = bool.Parse(config.AppSettings.Settings["RunCustomQuery"].Value);
+
+            if (config.AppSettings.Settings["TotalRowsScale"].Value == "Linear")
+            {
+                Prefs.bTotalRowsLinear = true;
+                Prefs.bTotalRowsLog = false;
+            }
+            else
+            {
+                Prefs.bTotalRowsLinear = false;
+                Prefs.bTotalRowsLog = true;
+            }
+
+            if (config.AppSettings.Settings["RPSScale"].Value == "Linear")
+            {
+                Prefs.bRPSScaleLinear = true;
+                Prefs.bRPSScaleLog = false;
+            }
+            else
+            {
+                Prefs.bRPSScaleLinear = false;
+                Prefs.bRPSScaleLog = true;
+            }
+
+            if (config.AppSettings.Settings["TopColumnsScale"].Value == "Linear")
+            {
+                Prefs.bTopColumnsScaleLinear = true;
+                Prefs.bTopColumnsScaleLog = false;
+            }
+            else
+            {
+                Prefs.bTopColumnsScaleLinear = false;
+                Prefs.bTopColumnsScaleLog = true;
+            }
+        }
+
+        private void _setupGraphs(AxisType objTotalRowsY, AxisType objRPSY, AxisType objAllTablesY)
         {
             
             zgcTotalRows.AutoSize = true;
@@ -236,6 +327,12 @@ namespace DataMovementAnalyzer
             objAllTablesPane.Title.Text = "Top ~5 Tables";
             objTotalRowsPane.Title.Text = "Total Rows";
             objRPSPane.Title.Text = "Rows Per Second";
+
+            //Setup Axis
+            objAllTablesPane.YAxis.Type = objAllTablesY;
+            objTotalRowsPane.YAxis.Type = objTotalRowsY;
+            objRPSPane.YAxis.Type = objRPSY;
+
 
             objRPSPane.CurveList.Clear();
             objTotalRowsPane.CurveList.Clear();
@@ -255,7 +352,7 @@ namespace DataMovementAnalyzer
             objTotalRowsPane.XAxis.Type = AxisType.Date;
 
             objRPSPane.XAxis.Title.Text = "Time";
-            objRPSPane.YAxis.Title.Text = "Rows";
+            objRPSPane.YAxis.Title.Text = "RPS";
             objRPSPane.XAxis.Type = AxisType.Date;
 
             objAllTablesPane.XAxis.Title.Text = "Time";
@@ -269,18 +366,18 @@ namespace DataMovementAnalyzer
 
             objTimer.Interval = iPollingFrequency * 1000;
 
-            iTickNumber = 1;
+            _iTickNumber = 1;
 
-            iMaxRows = -1;
-            iMaxRPS = -1;
+            _iMaxRows = -1;
+            _iMaxRPS = -1;
 
-            iMinRows = Int32.MaxValue;
-            iMinRPS = Int32.MaxValue;
+            _iMinRows = Int32.MaxValue;
+            _iMinRPS = Int32.MaxValue;
 
-            iCurrentRows = 0;
-            iTotalTime = 0;
-            iInitialRows = 0;
-            iPreviousRows = 0;
+            _iCurrentRows = 0;
+            _iTotalTime = 0;
+            _iInitialRows = 0;
+            _iPreviousRows = 0;
 
             if (objTotalRowsPairList != null && objRPSPairList != null)
             {
@@ -344,16 +441,16 @@ namespace DataMovementAnalyzer
         private void _editConnection()
         {
 
-            if(_tryGetDataConnectionStringFromUser(out strConnectionString)){
-                txtDBName.Text = new SqlConnection(strConnectionString).Database;
+            if(_tryGetDataConnectionStringFromUser(out _strConnectionString)){
+                txtDBName.Text = new SqlConnection(_strConnectionString).Database;
 
                 Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                config.ConnectionStrings.ConnectionStrings["SqlServerConnString"].ConnectionString = strConnectionString;
+                config.ConnectionStrings.ConnectionStrings["SqlServerConnString"].ConnectionString = _strConnectionString;
                 config.Save(ConfigurationSaveMode.Modified, true);
                 ConfigurationManager.RefreshSection("connectionStrings");
             }
 
-            objSqlDB = new SqlServerDB(strConnectionString);
+            objSqlDB = new SqlServerDB(_strConnectionString);
         }
 
         private Color _randomColorForInt(int i)
@@ -398,7 +495,7 @@ namespace DataMovementAnalyzer
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Exception thrown: " + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                displayError(ex.Message);
             }
         }
 
@@ -434,7 +531,7 @@ namespace DataMovementAnalyzer
 
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPreferencescs objPrefs = new frmPreferencescs(this);
+            frmPreferencescs objPrefs = new frmPreferencescs(this, _objPrefs);
 
             objPrefs.ShowDialog();
 
@@ -450,6 +547,11 @@ namespace DataMovementAnalyzer
             txtCustomQuery.SaveFile(QUERY_FILE_PATH, RichTextBoxStreamType.RichText);
 
             MessageBox.Show("File Saved!");
+        }
+
+        private void displayError(string errorMessage)
+        {
+            MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
     }
