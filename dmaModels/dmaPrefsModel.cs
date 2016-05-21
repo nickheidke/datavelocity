@@ -62,7 +62,7 @@ namespace dmaModels
         }
 
 
-        public int iNumberofPoints
+        public int NumberofPoints
         {
             get { return _iNumberofPoints; }
             set { _iNumberofPoints = value; }
@@ -76,7 +76,7 @@ namespace dmaModels
         }
 
 
-        public bool bCustomQuery
+        public bool CustomQuery
         {
             get { return _bCustomQuery; }
             set { _bCustomQuery = value; }

@@ -101,7 +101,7 @@ namespace DataMovementAnalyzer
                     }
                     else
                     {
-                        objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(_objPrefsModel.iNumberofPoints), Color.Red, SymbolType.Default); ;
+                        objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(_objPrefsModel.NumberofPoints), Color.Red, SymbolType.Default); ;
                         ci = objAllTablesPane.CurveList.Find(x => x.Label.Text == row["TableName"].ToString());
                         ci.AddPoint((double)new XDate(dtNow), Int32.Parse(row["RowCnt"].ToString()));
                     }
@@ -187,7 +187,7 @@ namespace DataMovementAnalyzer
                 {
                     DataRow row = dt.Rows[i];
 
-                    objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(_objPrefsModel.iNumberofPoints), _randomColorForInt(i), SymbolType.Default); ;
+                    objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(_objPrefsModel.NumberofPoints), _randomColorForInt(i), SymbolType.Default); ;
                 }
             }
         }
@@ -200,9 +200,9 @@ namespace DataMovementAnalyzer
         public void saveConfig()
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.AppSettings.Settings["NumberOfPoints"].Value = Prefs.iNumberofPoints.ToString();
+            config.AppSettings.Settings["NumberOfPoints"].Value = Prefs.NumberofPoints.ToString();
             config.AppSettings.Settings["PollingFrequency"].Value = Prefs.PollingFrequency.ToString();
-            config.AppSettings.Settings["RunCustomQuery"].Value = Prefs.bCustomQuery.ToString();
+            config.AppSettings.Settings["RunCustomQuery"].Value = Prefs.CustomQuery.ToString();
 
             if (Prefs.bTotalRowsLinear)
             {
@@ -245,9 +245,9 @@ namespace DataMovementAnalyzer
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-            Prefs.iNumberofPoints = int.Parse(config.AppSettings.Settings["NumberOfPoints"].Value);
+            Prefs.NumberofPoints = int.Parse(config.AppSettings.Settings["NumberOfPoints"].Value);
             Prefs.PollingFrequency = int.Parse(config.AppSettings.Settings["PollingFrequency"].Value);
-            Prefs.bCustomQuery = bool.Parse(config.AppSettings.Settings["RunCustomQuery"].Value);
+            Prefs.CustomQuery = bool.Parse(config.AppSettings.Settings["RunCustomQuery"].Value);
 
             if (config.AppSettings.Settings["TotalRowsScale"].Value == "Linear")
             {
@@ -310,8 +310,8 @@ namespace DataMovementAnalyzer
             objAllTablesPane.CurveList.Clear();
 
             // poing pair lists
-            objTotalRowsPairList = new RollingPointPairList(_objPrefsModel.iNumberofPoints);
-            objRPSPairList = new RollingPointPairList(_objPrefsModel.iNumberofPoints);
+            objTotalRowsPairList = new RollingPointPairList(_objPrefsModel.NumberofPoints);
+            objRPSPairList = new RollingPointPairList(_objPrefsModel.NumberofPoints);
 
 
             objTotalRowsPane.AddCurve("Total Rows", objTotalRowsPairList, Color.Red, SymbolType.Default);

@@ -53,19 +53,19 @@ namespace DataMovementAnalyzer
         {
             txtNumberOfPoints.DataBindings.Add("Text",
                                 objModel,
-                                "iNumberOfPoints",
+                                "NumberOfPoints",
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
 
             txtPollingFrequency.DataBindings.Add("Text",
                                 objModel,
-                                "iPollingFrequency",
+                                "PollingFrequency",
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
 
             chkRunCustomQuery.DataBindings.Add("Checked",
                                 objModel,
-                                "bCustomQuery",
+                                "CustomQuery",
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
 
