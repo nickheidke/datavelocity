@@ -14,8 +14,8 @@ namespace DataMovementAnalyzer
     public partial class frmPreferencescs : Form
     {
         frmDataMovementAnalyzer objDataAnalyzer;
-        dmaPreferences objModel;
-        public frmPreferencescs(frmDataMovementAnalyzer sender, dmaPreferences objPrefsModel)
+        dmaPrefsModel objModel;
+        public frmPreferencescs(frmDataMovementAnalyzer sender, dmaPrefsModel objPrefsModel)
         {
             InitializeComponent();
 

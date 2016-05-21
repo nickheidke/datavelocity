@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dmaModels
 {
-    public class dmaPreferences
+    public class dmaPrefsModel
     {
         private bool _bTotalRowsLinear;
         private bool _bTotalRowsLog;
@@ -20,7 +20,7 @@ namespace dmaModels
         private bool _bCustomQuery;
 
 
-        public dmaPreferences()
+        public dmaPrefsModel()
         {
             
         }
@@ -69,7 +69,7 @@ namespace dmaModels
         }
 
 
-        public int iPollingFrequency
+        public int PollingFrequency
         {
             get { return _iPollingFrequency; }
             set { _iPollingFrequency = value; }
