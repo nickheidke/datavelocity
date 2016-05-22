@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dmaModels
+namespace dvaModels
 {
-    public class dmaPrefsModel
+    public class dvaPrefsModel
     {
         private bool _bTotalRowsLinear;
         private bool _bTotalRowsLog;
@@ -20,7 +20,7 @@ namespace dmaModels
         private bool _bCustomQuery;
 
 
-        public dmaPrefsModel()
+        public dvaPrefsModel()
         {
             
         }

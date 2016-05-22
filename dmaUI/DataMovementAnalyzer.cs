@@ -12,30 +12,30 @@ using System.Windows.Forms;
 using Microsoft.Data.ConnectionUI;
 using ZedGraph;
 using System.IO;
-using dmaModels;
-using dmaController;
+using dvaModels;
+using dvaController;
 
 namespace DataMovementAnalyzer
 {
-    public partial class frmDataMovementAnalyzer : Form
+    public partial class DataMovementAnalyzer : Form
     {
         //private int _iCurrentRows, _iTotalTime, _iInitialRows, _iPreviousRows, _iMaxRPS, _iMaxRows, _iTickNumber, _iMinRPS, _iMinRows;
         public bool bRunCustomQuery;
         private string _sConnectionString;
-        dmaPrefsModel _objPrefsModel;
-        dmaGraphingModel _objGraphingModel;
+        dvaPrefsModel _objPrefsModel;
+        dvaGraphingModel _objGraphingModel;
 
-        dmaGraphingController _objGraphingController;
-        dmaPrefsController _objPrefsController;
+        dvaGraphingController _objGraphingController;
+        dvaPrefsController _objPrefsController;
 
         
         RollingPointPairList objTotalRowsPairList, objRPSPairList;
         GraphPane objTotalRowsPane, objRPSPane, objAllTablesPane;
-        //dmaDatabase objSqlDB;
+        //dvaDatabase objSqlDB;
         
         private static string QUERY_FILE_PATH = "App_Data\\Query.txt";
 
-        public frmDataMovementAnalyzer()
+        public DataMovementAnalyzer()
         {
             InitializeComponent();
 
@@ -50,10 +50,10 @@ namespace DataMovementAnalyzer
                 bRunCustomQuery = false;
             }
 
-            _objGraphingModel = new dmaGraphingModel();
-            _objPrefsModel = new dmaPrefsModel();
+            _objGraphingModel = new dvaGraphingModel();
+            _objPrefsModel = new dvaPrefsModel();
 
-            _objGraphingController = new dmaGraphingController(_objGraphingModel, _sConnectionString);
+            _objGraphingController = new dvaGraphingController(_objGraphingModel, _sConnectionString);
 
             txtDBName.Text = _objGraphingController.GetDatabaseName();
 
@@ -73,7 +73,7 @@ namespace DataMovementAnalyzer
                 Prefs.bTopColumnsScaleLinear ? AxisType.Linear : AxisType.Log);    
         }
 
-        public dmaPrefsModel Prefs
+        public dvaPrefsModel Prefs
         {
             get { return _objPrefsModel; }
             set { _objPrefsModel = value; }
@@ -339,7 +339,7 @@ namespace DataMovementAnalyzer
 
             objTimer.Interval = _objPrefsModel.PollingFrequency * 1000;
 
-            _objGraphingController.Model = new dmaGraphingModel();
+            _objGraphingController.Model = new dvaGraphingModel();
 
             if (objTotalRowsPairList != null && objRPSPairList != null)
             {
@@ -493,7 +493,7 @@ namespace DataMovementAnalyzer
 
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPreferencescs objPrefs = new frmPreferencescs(this, _objPrefsModel);
+            Preferencescs objPrefs = new Preferencescs(this, _objPrefsModel);
 
             objPrefs.ShowDialog();
 
@@ -501,7 +501,7 @@ namespace DataMovementAnalyzer
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmAboutBox().ShowDialog();
+            new AboutBox().ShowDialog();
         }
 
         private void btnSaveCustom_Click(object sender, EventArgs e)

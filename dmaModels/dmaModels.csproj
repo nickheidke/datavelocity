@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dmaGraphingModel.cs" />
-    <Compile Include="dmaPrefsModel.cs" />
+    <Compile Include="dvaGraphingModel.cs" />
+    <Compile Include="dvaPrefsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

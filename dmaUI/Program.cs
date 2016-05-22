@@ -18,7 +18,7 @@ namespace DataMovementAnalyzer
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
-                Application.Run(new frmDataMovementAnalyzer());
+                Application.Run(new DataMovementAnalyzer());
             }
             catch (Exception ex)
             {

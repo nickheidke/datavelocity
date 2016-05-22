@@ -1,4 +1,4 @@
-﻿using dmaModels;
+﻿using dvaModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace DataMovementAnalyzer
 {
-    public partial class frmPreferencescs : Form
+    public partial class Preferencescs : Form
     {
-        frmDataMovementAnalyzer objDataAnalyzer;
-        dmaPrefsModel objModel;
-        public frmPreferencescs(frmDataMovementAnalyzer sender, dmaPrefsModel objPrefsModel)
+        DataMovementAnalyzer objDataAnalyzer;
+        dvaPrefsModel objModel;
+        public Preferencescs(DataMovementAnalyzer sender, dvaPrefsModel objPrefsModel)
         {
             InitializeComponent();
 

@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class dmaSqlServerDB : dmaDatabase
+    public class dvaSqlServerDB : dvaDatabase
     {
         SqlConnection _conn;
 
         #region Constructors
-        public dmaSqlServerDB(string connectionString) : base(connectionString) 
+        public dvaSqlServerDB(string connectionString) : base(connectionString) 
         {
             _conn = new SqlConnection(base._connectionString);
         }

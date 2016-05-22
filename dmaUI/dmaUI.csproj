@@ -104,34 +104,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmAboutBox.cs">
+    <Compile Include="AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAboutBox.Designer.cs">
-      <DependentUpon>frmAboutBox.cs</DependentUpon>
+    <Compile Include="AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDataMovementAnalyzer.cs">
+    <Compile Include="DataMovementAnalyzer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDataMovementAnalyzer.Designer.cs">
-      <DependentUpon>frmDataMovementAnalyzer.cs</DependentUpon>
+    <Compile Include="DataMovementAnalyzer.Designer.cs">
+      <DependentUpon>DataMovementAnalyzer.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPreferencescs.cs">
+    <Compile Include="Preferencescs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPreferencescs.Designer.cs">
-      <DependentUpon>frmPreferencescs.cs</DependentUpon>
+    <Compile Include="Preferencescs.Designer.cs">
+      <DependentUpon>Preferencescs.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmAboutBox.resx">
-      <DependentUpon>frmAboutBox.cs</DependentUpon>
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDataMovementAnalyzer.resx">
-      <DependentUpon>frmDataMovementAnalyzer.cs</DependentUpon>
+    <EmbeddedResource Include="DataMovementAnalyzer.resx">
+      <DependentUpon>DataMovementAnalyzer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPreferencescs.resx">
-      <DependentUpon>frmPreferencescs.cs</DependentUpon>
+    <EmbeddedResource Include="Preferencescs.resx">
+      <DependentUpon>Preferencescs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

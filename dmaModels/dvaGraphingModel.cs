@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dmaModels
+namespace dvaModels
 {
-    public class dmaGraphingModel
+    public class dvaGraphingModel
     {
         #region PrivateFields
         private int _iCurrentRowCount, _iTotalTime, _iInitialRows, _iPreviousRows, _iMaxRPS, _iMaxRows, _iTickNumber, _iMinRPS, _iMinRows, _iCurrentRPS;
@@ -85,7 +85,7 @@ namespace dmaModels
         #endregion
 
         #region Constructors
-        public dmaGraphingModel()
+        public dvaGraphingModel()
         {
             _iTickNumber = 1;
 
