@@ -57,7 +57,7 @@ namespace dvvController
 
             _model.RowCounts = _db.getAllRowCounts(false);
 
-            _model.CurrentRPS = (_model.CurrentRowCount - _model.PreviousRowCount) / prefsModel.PollingFrequency;
+            _model.CurrentRPS = (_model.CurrentRowCount - _model.PreviousRowCount) / (double)prefsModel.PollingFrequency;
 
 
             if (_model.CurrentRPS > _model.MaxRPS)

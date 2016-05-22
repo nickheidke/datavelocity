@@ -62,7 +62,7 @@ namespace dvvModels
         }
 
 
-        public int NumberofPoints
+        public int NumberOfPoints
         {
             get { return _iNumberofPoints; }
             set { _iNumberofPoints = value; }
@@ -76,7 +76,7 @@ namespace dvvModels
         }
 
 
-        public bool CustomQuery
+        public bool RunCustomQuery
         {
             get { return _bCustomQuery; }
             set { _bCustomQuery = value; }

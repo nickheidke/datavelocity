@@ -15,6 +15,7 @@ namespace DataMovementAnalyzer
         static void Main()
         {
             Application.EnableVisualStyles();
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {

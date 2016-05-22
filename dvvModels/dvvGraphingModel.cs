@@ -10,7 +10,8 @@ namespace dvvModels
     public class dvvGraphingModel
     {
         #region PrivateFields
-        private int _iCurrentRowCount, _iTotalTime, _iInitialRows, _iPreviousRows, _iMaxRPS, _iMaxRows, _iTickNumber, _iMinRPS, _iMinRows, _iCurrentRPS;
+        private int _iCurrentRowCount, _iTotalTime, _iInitialRows, _iPreviousRows, _iMaxRows, _iTickNumber,  _iMinRows;
+        private double _dCurrentRPS, _dMaxRPS, _dMinRPS;
         DataTable _objRowCounts;
         #endregion
 
@@ -21,10 +22,10 @@ namespace dvvModels
             set { _iMinRows = value; }
         }
 
-        public int MinRPS
+        public double MinRPS
         {
-            get { return _iMinRPS; }
-            set { _iMinRPS = value; }
+            get { return _dMinRPS; }
+            set { _dMinRPS = value; }
         }
 
         public int TickNumber
@@ -39,10 +40,10 @@ namespace dvvModels
             set { _iMaxRows = value; }
         }
 
-        public int MaxRPS
+        public double MaxRPS
         {
-            get { return _iMaxRPS; }
-            set { _iMaxRPS = value; }
+            get { return _dMaxRPS; }
+            set { _dMaxRPS = value; }
         }
 
         public int PreviousRowCount
@@ -77,10 +78,10 @@ namespace dvvModels
         }
 
 
-        public int CurrentRPS
+        public double CurrentRPS
         {
-            get { return _iCurrentRPS; }
-            set { _iCurrentRPS = value; }
+            get { return _dCurrentRPS; }
+            set { _dCurrentRPS = value; }
         }
         #endregion
 
@@ -90,10 +91,10 @@ namespace dvvModels
             _iTickNumber = 1;
 
             _iMaxRows = -1;
-            _iMaxRPS = -1;
+            _dMaxRPS = -1;
 
             _iMinRows = Int32.MaxValue;
-            _iMinRPS = Int32.MaxValue;
+            _dMinRPS = Int32.MaxValue;
 
             _iCurrentRowCount = 0;
             _iTotalTime = 0;

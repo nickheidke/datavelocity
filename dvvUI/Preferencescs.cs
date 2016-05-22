@@ -34,9 +34,9 @@ namespace DataMovementAnalyzer
 
         private void frmPreferencescs_Load(object sender, EventArgs e)
         {
-            //txtNumberOfPoints.Text = objDataAnalyzer.iNumberOfPoints.ToString();
-            //txtPollingFrequency.Text = objDataAnalyzer.iPollingFrequency.ToString();
-            //chkRunCustomQuery.Checked = objDataAnalyzer.bRunCustomQuery;
+            //txtNumberOfPoints.Text = objModel.NumberOfPoints.ToString();
+            //txtPollingFrequency.Text = objModel.PollingFrequency.ToString() ;
+            //chkRunCustomQuery.Checked = objModel.RunCustomQuery;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace DataMovementAnalyzer
 
             chkRunCustomQuery.DataBindings.Add("Checked",
                                 objModel,
-                                "CustomQuery",
+                                "RunCustomQuery",
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
 

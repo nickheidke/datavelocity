@@ -101,7 +101,7 @@ namespace DataMovementAnalyzer
                     }
                     else
                     {
-                        objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(_objPrefsModel.NumberofPoints), Color.Red, SymbolType.Default); ;
+                        objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(_objPrefsModel.NumberOfPoints), Color.Red, SymbolType.Default); ;
                         ci = objAllTablesPane.CurveList.Find(x => x.Label.Text == row["TableName"].ToString());
                         ci.AddPoint((double)new XDate(dtNow), Int32.Parse(row["RowCnt"].ToString()));
                     }
@@ -110,7 +110,7 @@ namespace DataMovementAnalyzer
                 dgvTableList.DataSource = _objGraphingController.Model.RowCounts;
 
 
-                if (bRunCustomQuery)
+                if (Prefs.RunCustomQuery)
                 {
                     dgvCustom.DataSource = _getCustomQueryResults();
                 }
@@ -122,19 +122,24 @@ namespace DataMovementAnalyzer
 
                 objRPSPairList.Add((double)new XDate(dtNow), _objGraphingController.Model.CurrentRPS);
 
-                lblRPS.Text = String.Format("Current Rows/sec: {0}", _objGraphingController.Model.CurrentRPS.ToString("N0"));
+                lblRPS.Text = String.Format("Current Rows/sec: {0}", _objGraphingController.Model.CurrentRPS.ToString("N1"));
 
-                if (_objGraphingController.Model.CurrentRPS < _objGraphingController.Model.MinRPS)
+                if (_objGraphingController.Model.CurrentRPS >= _objGraphingController.Model.MaxRPS)
                 {
-                    lblMinRPS.Text = String.Format("Min Rows/sec: {0}", _objGraphingController.Model.MinRPS.ToString("N0"));
+                    lblMaxRPS.Text = String.Format("Max Rows/sec: {0}", _objGraphingController.Model.MaxRPS.ToString("N1"));
                 }
 
-                if (_objGraphingController.Model.CurrentRowCount > _objGraphingController.Model.MaxRowCount)
+                if (_objGraphingController.Model.CurrentRPS <= _objGraphingController.Model.MinRPS)
+                {
+                    lblMinRPS.Text = String.Format("Min Rows/sec: {0}", _objGraphingController.Model.MinRPS.ToString("N1"));
+                }
+
+                if (_objGraphingController.Model.CurrentRowCount >= _objGraphingController.Model.MaxRowCount)
                 {
                     lblMaxRowCount.Text = String.Format("Max Row Count: {0}", _objGraphingController.Model.MaxRowCount.ToString("N0"));
                 }
 
-                if (_objGraphingController.Model.CurrentRowCount < _objGraphingController.Model.MinRowCount)
+                if (_objGraphingController.Model.CurrentRowCount <= _objGraphingController.Model.MinRowCount)
                 {
                     lblMinRowCount.Text = String.Format("Min Row Count: {0}", _objGraphingController.Model.MinRowCount.ToString("N0"));
                 }
@@ -187,7 +192,7 @@ namespace DataMovementAnalyzer
                 {
                     DataRow row = dt.Rows[i];
 
-                    objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(_objPrefsModel.NumberofPoints), _randomColorForInt(i), SymbolType.Default); ;
+                    objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(_objPrefsModel.NumberOfPoints), _randomColorForInt(i), SymbolType.Default); ;
                 }
             }
         }
@@ -200,9 +205,9 @@ namespace DataMovementAnalyzer
         public void saveConfig()
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.AppSettings.Settings["NumberOfPoints"].Value = Prefs.NumberofPoints.ToString();
+            config.AppSettings.Settings["NumberOfPoints"].Value = Prefs.NumberOfPoints.ToString();
             config.AppSettings.Settings["PollingFrequency"].Value = Prefs.PollingFrequency.ToString();
-            config.AppSettings.Settings["RunCustomQuery"].Value = Prefs.CustomQuery.ToString();
+            config.AppSettings.Settings["RunCustomQuery"].Value = Prefs.RunCustomQuery.ToString();
 
             if (Prefs.bTotalRowsLinear)
             {
@@ -245,9 +250,9 @@ namespace DataMovementAnalyzer
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-            Prefs.NumberofPoints = int.Parse(config.AppSettings.Settings["NumberOfPoints"].Value);
+            Prefs.NumberOfPoints = int.Parse(config.AppSettings.Settings["NumberOfPoints"].Value);
             Prefs.PollingFrequency = int.Parse(config.AppSettings.Settings["PollingFrequency"].Value);
-            Prefs.CustomQuery = bool.Parse(config.AppSettings.Settings["RunCustomQuery"].Value);
+            Prefs.RunCustomQuery = bool.Parse(config.AppSettings.Settings["RunCustomQuery"].Value);
 
             if (config.AppSettings.Settings["TotalRowsScale"].Value == "Linear")
             {
@@ -310,8 +315,8 @@ namespace DataMovementAnalyzer
             objAllTablesPane.CurveList.Clear();
 
             // poing pair lists
-            objTotalRowsPairList = new RollingPointPairList(_objPrefsModel.NumberofPoints);
-            objRPSPairList = new RollingPointPairList(_objPrefsModel.NumberofPoints);
+            objTotalRowsPairList = new RollingPointPairList(_objPrefsModel.NumberOfPoints);
+            objRPSPairList = new RollingPointPairList(_objPrefsModel.NumberOfPoints);
 
 
             objTotalRowsPane.AddCurve("Total Rows", objTotalRowsPairList, Color.Red, SymbolType.Default);
