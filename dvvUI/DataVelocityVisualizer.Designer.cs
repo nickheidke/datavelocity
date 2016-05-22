@@ -59,7 +59,10 @@
             this.tableGraphs = new System.Windows.Forms.TableLayoutPanel();
             this.zgcRPS = new ZedGraph.ZedGraphControl();
             this.objTabTop10 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.zgcAllTables = new ZedGraph.ZedGraphControl();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dgvTableList = new System.Windows.Forms.DataGridView();
             this.objTabQueryResults = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgvCustom = new System.Windows.Forms.DataGridView();
@@ -67,9 +70,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtCustomQuery = new System.Windows.Forms.RichTextBox();
             this.btnSaveCustom = new System.Windows.Forms.Button();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dgvTableList = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -78,14 +78,14 @@
             this.obTabTotals.SuspendLayout();
             this.tableGraphs.SuspendLayout();
             this.objTabTop10.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTableList)).BeginInit();
             this.objTabQueryResults.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustom)).BeginInit();
             this.objTabQuery.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTableList)).BeginInit();
             this.SuspendLayout();
             // 
             // objTimer
@@ -385,6 +385,21 @@
             this.objTabTop10.Text = "Extras";
             this.objTabTop10.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.75862F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.24138F));
+            this.tableLayoutPanel3.Controls.Add(this.zgcAllTables, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.groupBox5, 1, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(860, 490);
+            this.tableLayoutPanel3.TabIndex = 12;
+            // 
             // zgcAllTables
             // 
             this.zgcAllTables.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -400,6 +415,31 @@
             this.zgcAllTables.Size = new System.Drawing.Size(619, 484);
             this.zgcAllTables.TabIndex = 11;
             this.zgcAllTables.UseExtendedPrintDialog = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.dgvTableList);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(628, 3);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(229, 484);
+            this.groupBox5.TabIndex = 12;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Table List";
+            // 
+            // dgvTableList
+            // 
+            this.dgvTableList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvTableList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvTableList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTableList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTableList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvTableList.EnableHeadersVisualStyles = false;
+            this.dgvTableList.Location = new System.Drawing.Point(3, 16);
+            this.dgvTableList.Name = "dgvTableList";
+            this.dgvTableList.RowHeadersVisible = false;
+            this.dgvTableList.Size = new System.Drawing.Size(223, 465);
+            this.dgvTableList.TabIndex = 2;
             // 
             // objTabQueryResults
             // 
@@ -479,47 +519,7 @@
             this.btnSaveCustom.UseVisualStyleBackColor = true;
             this.btnSaveCustom.Click += new System.EventHandler(this.btnSaveCustom_Click);
             // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.75862F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.24138F));
-            this.tableLayoutPanel3.Controls.Add(this.zgcAllTables, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.groupBox5, 1, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(860, 490);
-            this.tableLayoutPanel3.TabIndex = 12;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.dgvTableList);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(628, 3);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(229, 484);
-            this.groupBox5.TabIndex = 12;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Table List";
-            // 
-            // dgvTableList
-            // 
-            this.dgvTableList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvTableList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvTableList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTableList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTableList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvTableList.EnableHeadersVisualStyles = false;
-            this.dgvTableList.Location = new System.Drawing.Point(3, 16);
-            this.dgvTableList.Name = "dgvTableList";
-            this.dgvTableList.RowHeadersVisible = false;
-            this.dgvTableList.Size = new System.Drawing.Size(223, 465);
-            this.dgvTableList.TabIndex = 2;
-            // 
-            // frmDataMovementAnalyzer
+            // DataVelocityVisualizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -530,7 +530,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(888, 650);
-            this.Name = "frmDataMovementAnalyzer";
+            this.Name = "DataVelocityVisualizer";
             this.Text = "Data Movement Analyzer";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -543,14 +543,14 @@
             this.obTabTotals.ResumeLayout(false);
             this.tableGraphs.ResumeLayout(false);
             this.objTabTop10.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTableList)).EndInit();
             this.objTabQueryResults.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustom)).EndInit();
             this.objTabQuery.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTableList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
