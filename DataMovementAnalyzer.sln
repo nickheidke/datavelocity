@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvUI", "dmaUI\dvvUI.csproj", "{D8D98B4D-22BD-4E20-9145-1B8992A84785}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvUI", "dvvUI\dvvUI.csproj", "{D8D98B4D-22BD-4E20-9145-1B8992A84785}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvDataAccess", "dmaDataAccess\dvvDataAccess.csproj", "{327F5434-05B7-4223-B27A-61A15C2BC9AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvDataAccess", "dvvDataAccess\dvvDataAccess.csproj", "{327F5434-05B7-4223-B27A-61A15C2BC9AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvModels", "dmaModels\dvvModels.csproj", "{35C8A4BD-0159-4E2C-AE5B-F6F55F4720FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvModels", "dvvModels\dvvModels.csproj", "{35C8A4BD-0159-4E2C-AE5B-F6F55F4720FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvController", "dmaController\dvvController.csproj", "{E17CA4E6-828C-418A-AFB4-D3EC694140A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvController", "dvvController\dvvController.csproj", "{E17CA4E6-828C-418A-AFB4-D3EC694140A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
