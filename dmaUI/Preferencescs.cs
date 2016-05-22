@@ -1,4 +1,4 @@
-﻿using dmaModels;
+﻿using dvvModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace DataMovementAnalyzer
 {
-    public partial class frmPreferencescs : Form
+    public partial class Preferencescs : Form
     {
-        frmDataMovementAnalyzer objDataAnalyzer;
-        dmaPreferences objModel;
-        public frmPreferencescs(frmDataMovementAnalyzer sender, dmaPreferences objPrefsModel)
+        DataVelocityVisualizer objDataAnalyzer;
+        dvvPrefsModel objModel;
+        public Preferencescs(DataVelocityVisualizer sender, dvvPrefsModel objPrefsModel)
         {
             InitializeComponent();
 
@@ -53,19 +53,19 @@ namespace DataMovementAnalyzer
         {
             txtNumberOfPoints.DataBindings.Add("Text",
                                 objModel,
-                                "iNumberOfPoints",
+                                "NumberOfPoints",
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
 
             txtPollingFrequency.DataBindings.Add("Text",
                                 objModel,
-                                "iPollingFrequency",
+                                "PollingFrequency",
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
 
             chkRunCustomQuery.DataBindings.Add("Checked",
                                 objModel,
-                                "bCustomQuery",
+                                "CustomQuery",
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
 

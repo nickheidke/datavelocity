@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace DataMovementAnalyzer
 {
-    partial class frmAboutBox : Form
+    partial class AboutBox : Form
     {
-        public frmAboutBox()
+        public AboutBox()
         {
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);

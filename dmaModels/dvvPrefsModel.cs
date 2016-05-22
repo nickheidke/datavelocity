@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dmaModels
+namespace dvvModels
 {
-    public class dmaPreferences
+    public class dvvPrefsModel
     {
         private bool _bTotalRowsLinear;
         private bool _bTotalRowsLog;
@@ -20,7 +20,7 @@ namespace dmaModels
         private bool _bCustomQuery;
 
 
-        public dmaPreferences()
+        public dvvPrefsModel()
         {
             
         }
@@ -28,55 +28,55 @@ namespace dmaModels
         public bool bTotalRowsLinear
         {
             get { return _bTotalRowsLinear; }
-            set { _bTotalRowsLinear = value; }
+            set { _bTotalRowsLinear = value; _bTotalRowsLog = !value; }
         }
 
         public bool bTotalRowsLog
         {
             get { return _bTotalRowsLog; }
-            set { _bTotalRowsLog = value; }
+            set { _bTotalRowsLog = value; _bTotalRowsLinear = !value; }
         }
 
         public bool bRPSScaleLinear
         {
             get { return _bRPSScaleLinear; }
-            set { _bRPSScaleLinear = value; }
+            set { _bRPSScaleLinear = value; _bRPSScaleLog = !value; }
         }
 
         public bool bRPSScaleLog
         {
             get { return _bRPSScaleLog; }
-            set { _bRPSScaleLog = value; }
+            set { _bRPSScaleLog = value; _bRPSScaleLinear = !value; }
         }
 
         public bool bTopColumnsScaleLinear
         {
             get { return _bTopColumnsScaleLinear; }
-            set { _bTopColumnsScaleLinear = value; }
+            set { _bTopColumnsScaleLinear = value; _bTopColumnsScaleLog = !value; }
         }
 
         public bool bTopColumnsScaleLog
         {
             get { return _bTopColumnsScaleLog; }
-            set { _bTopColumnsScaleLog = value; }
+            set { _bTopColumnsScaleLog = value; _bTopColumnsScaleLinear = !value; }
         }
 
 
-        public int iNumberofPoints
+        public int NumberofPoints
         {
             get { return _iNumberofPoints; }
             set { _iNumberofPoints = value; }
         }
 
 
-        public int iPollingFrequency
+        public int PollingFrequency
         {
             get { return _iPollingFrequency; }
             set { _iPollingFrequency = value; }
         }
 
 
-        public bool bCustomQuery
+        public bool CustomQuery
         {
             get { return _bCustomQuery; }
             set { _bCustomQuery = value; }

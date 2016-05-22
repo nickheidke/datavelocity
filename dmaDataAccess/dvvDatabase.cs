@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public abstract class Database : IDisposable
+    public abstract class dvvDatabase : IDisposable
     {
         protected string _connectionString;
         bool _disposed = false;
         SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
 
-        protected Database(string connectionString)
+        protected dvvDatabase(string connectionString)
         {
             _connectionString = connectionString;
         }

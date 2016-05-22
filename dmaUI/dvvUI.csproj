@@ -56,7 +56,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>DMA.ico</ApplicationIcon>
+    <ApplicationIcon>DVV.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>B7FE755BD0A65E2F71A02DDEB316BD472B7EA30B</ManifestCertificateThumbprint>
@@ -104,34 +104,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmAboutBox.cs">
+    <Compile Include="AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAboutBox.Designer.cs">
-      <DependentUpon>frmAboutBox.cs</DependentUpon>
+    <Compile Include="AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDataMovementAnalyzer.cs">
+    <Compile Include="DataVelocityVisualizer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDataMovementAnalyzer.Designer.cs">
-      <DependentUpon>frmDataMovementAnalyzer.cs</DependentUpon>
+    <Compile Include="DataVelocityVisualizer.Designer.cs">
+      <DependentUpon>DataVelocityVisualizer.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPreferencescs.cs">
+    <Compile Include="Preferencescs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPreferencescs.Designer.cs">
-      <DependentUpon>frmPreferencescs.cs</DependentUpon>
+    <Compile Include="Preferencescs.Designer.cs">
+      <DependentUpon>Preferencescs.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmAboutBox.resx">
-      <DependentUpon>frmAboutBox.cs</DependentUpon>
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDataMovementAnalyzer.resx">
-      <DependentUpon>frmDataMovementAnalyzer.cs</DependentUpon>
+    <EmbeddedResource Include="DataVelocityVisualizer.resx">
+      <DependentUpon>DataVelocityVisualizer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPreferencescs.resx">
-      <DependentUpon>frmPreferencescs.cs</DependentUpon>
+    <EmbeddedResource Include="Preferencescs.resx">
+      <DependentUpon>Preferencescs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -165,7 +165,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="database.png" />
-    <Content Include="DMA.ico" />
+    <Content Include="DVV.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -186,13 +186,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\dmaDataAccess\dmaDataAccess.csproj">
-      <Project>{327f5434-05b7-4223-b27a-61a15c2bc9ac}</Project>
-      <Name>dmaDataAccess</Name>
+    <ProjectReference Include="..\dmaController\dvvController.csproj">
+      <Project>{e17ca4e6-828c-418a-afb4-d3ec694140a2}</Project>
+      <Name>dvvController</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dmaModels\dmaModels.csproj">
+    <ProjectReference Include="..\dmaModels\dvvModels.csproj">
       <Project>{35c8a4bd-0159-4e2c-ae5b-f6f55f4720fb}</Project>
-      <Name>dmaModels</Name>
+      <Name>dvvModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
