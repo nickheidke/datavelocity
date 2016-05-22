@@ -56,7 +56,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>DMA.ico</ApplicationIcon>
+    <ApplicationIcon>DVV.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>B7FE755BD0A65E2F71A02DDEB316BD472B7EA30B</ManifestCertificateThumbprint>
@@ -110,11 +110,11 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataMovementAnalyzer.cs">
+    <Compile Include="DataVelocityVisualizer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataMovementAnalyzer.Designer.cs">
-      <DependentUpon>DataMovementAnalyzer.cs</DependentUpon>
+    <Compile Include="DataVelocityVisualizer.Designer.cs">
+      <DependentUpon>DataVelocityVisualizer.cs</DependentUpon>
     </Compile>
     <Compile Include="Preferencescs.cs">
       <SubType>Form</SubType>
@@ -127,8 +127,8 @@
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataMovementAnalyzer.resx">
-      <DependentUpon>DataMovementAnalyzer.cs</DependentUpon>
+    <EmbeddedResource Include="DataVelocityVisualizer.resx">
+      <DependentUpon>DataVelocityVisualizer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Preferencescs.resx">
       <DependentUpon>Preferencescs.cs</DependentUpon>
@@ -165,7 +165,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="database.png" />
-    <Content Include="DMA.ico" />
+    <Content Include="DVV.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -186,13 +186,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\dmaController\dmaController.csproj">
+    <ProjectReference Include="..\dmaController\dvvController.csproj">
       <Project>{e17ca4e6-828c-418a-afb4-d3ec694140a2}</Project>
-      <Name>dmaController</Name>
+      <Name>dvvController</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dmaModels\dmaModels.csproj">
+    <ProjectReference Include="..\dmaModels\dvvModels.csproj">
       <Project>{35c8a4bd-0159-4e2c-ae5b-f6f55f4720fb}</Project>
-      <Name>dmaModels</Name>
+      <Name>dvvModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

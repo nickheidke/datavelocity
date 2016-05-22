@@ -1,4 +1,4 @@
-﻿using dvaModels;
+﻿using dvvModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +13,9 @@ namespace DataMovementAnalyzer
 {
     public partial class Preferencescs : Form
     {
-        DataMovementAnalyzer objDataAnalyzer;
-        dvaPrefsModel objModel;
-        public Preferencescs(DataMovementAnalyzer sender, dvaPrefsModel objPrefsModel)
+        DataVelocityVisualizer objDataAnalyzer;
+        dvvPrefsModel objModel;
+        public Preferencescs(DataVelocityVisualizer sender, dvvPrefsModel objPrefsModel)
         {
             InitializeComponent();
 
