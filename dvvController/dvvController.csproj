@@ -39,8 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dvaGraphingController.cs" />
-    <Compile Include="dvaPrefsController.cs" />
+    <Compile Include="dvvGraphingController.cs" />
+    <Compile Include="dvvPrefsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
