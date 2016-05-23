@@ -171,6 +171,7 @@ namespace DataMovementAnalyzer
             stopToolStripMenuItem.Enabled = false;
             resetToolStripMenuItem.Enabled = true;
             preferencesToolStripMenuItem.Enabled = true;
+            editConnectionToolStripMenuItem.Enabled = true;
         }
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
@@ -186,6 +187,7 @@ namespace DataMovementAnalyzer
                 startToolStripMenuItem.Enabled = false;
                 resetToolStripMenuItem.Enabled = false;
                 preferencesToolStripMenuItem.Enabled = false;
+                editConnectionToolStripMenuItem.Enabled = false;
 
                 DataTable dt = _objGraphingController.getAllRowCounts(false);
                 for (int i = 0; i < 5; i++)
