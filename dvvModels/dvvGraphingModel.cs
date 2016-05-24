@@ -10,8 +10,10 @@ namespace dvvModels
     public class dvvGraphingModel
     {
         #region PrivateFields
-        private int _iCurrentRowCount, _iTotalTime, _iInitialRows, _iPreviousRows, _iMaxRows, _iTickNumber,  _iMinRows;
-        private double _dCurrentRPS, _dMaxRPS, _dMinRPS;
+        private int _iCurrentRowCount, _iTotalTime, _iInitialRows, _iPreviousRows, _iMaxRows, _iTickNumber, _iMinRows, _iStartingRowCount, _iTotalRowsMoved;
+        private DateTime _dRunStart, _dRunEnd, _dEstimatedEnd;
+        private TimeSpan _tsTimeLeft;
+        private double _dCurrentRPS, _dMaxRPS, _dMinRPS, _dAverageRowCount, _dAverageRowCountNZ, _dAverageRPS, _dAverageRPSNZ;
         DataTable _objRowCounts;
         #endregion
 
@@ -82,6 +84,66 @@ namespace dvvModels
         {
             get { return _dCurrentRPS; }
             set { _dCurrentRPS = value; }
+        }
+
+        public int TotalRowsMoved
+        {
+            get { return _iTotalRowsMoved; }
+            set { _iTotalRowsMoved = value; }
+        }
+
+        public int StartingRowCount
+        {
+            get { return _iStartingRowCount; }
+            set { _iStartingRowCount = value; }
+        }
+
+        public DateTime EstimatedEnd
+        {
+            get { return _dEstimatedEnd; }
+            set { _dEstimatedEnd = value; }
+        }
+
+        public DateTime RunEnd
+        {
+            get { return _dRunEnd; }
+            set { _dRunEnd = value; }
+        }
+
+        public DateTime RunStart
+        {
+            get { return _dRunStart; }
+            set { _dRunStart = value; }
+        }
+
+        public TimeSpan TimeLeft
+        {
+            get { return _tsTimeLeft; }
+            set { _tsTimeLeft = value; }
+        }
+
+        public double AverageRowCount
+        {
+            get { return _dAverageRowCount; }
+            set { _dAverageRowCount = value; }
+        }
+
+        public double AverageRowCountNZ
+        {
+            get { return _dAverageRowCountNZ; }
+            set { _dAverageRowCountNZ = value; }
+        }
+
+        public double AverageRPS
+        {
+            get { return _dAverageRPS; }
+            set { _dAverageRPS = value; }
+        }
+
+        public double AverageRPSNZ
+        {
+            get { return _dAverageRPSNZ; }
+            set { _dAverageRPSNZ = value; }
         }
         #endregion
 

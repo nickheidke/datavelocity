@@ -39,6 +39,8 @@ namespace DataMovementAnalyzer
         {
             InitializeComponent();
 
+            
+
             _sConnectionString = ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString;
 
             try
@@ -52,6 +54,9 @@ namespace DataMovementAnalyzer
 
             _objGraphingModel = new dvvGraphingModel();
             _objPrefsModel = new dvvPrefsModel();
+
+
+            _setupBindings();
 
             _objGraphingController = new dvvGraphingController(_objGraphingModel, _sConnectionString);
 
@@ -83,8 +88,7 @@ namespace DataMovementAnalyzer
         {
             try
             {
-                _objGraphingController.Tick(_objPrefsModel);
-                
+                _objGraphingModel = _objGraphingController.Tick(_objPrefsModel);             
 
                 objAllTablesPane = zgcAllTables.GraphPane;
 
@@ -92,7 +96,7 @@ namespace DataMovementAnalyzer
 
                 for (int i = 0; i < 5; i++)
                 {
-                    DataRow row = _objGraphingController.Model.RowCounts.Rows[i];
+                    DataRow row = _objGraphingModel.RowCounts.Rows[i];
                     CurveItem ci = objAllTablesPane.CurveList.Find(x => x.Label.Text == row["TableName"].ToString());
 
                     if (ci != null)
@@ -107,7 +111,7 @@ namespace DataMovementAnalyzer
                     }
                 }
 
-                dgvTableList.DataSource = _objGraphingController.Model.RowCounts;
+                dgvTableList.DataSource = _objGraphingModel.RowCounts;
 
 
                 if (Prefs.RunCustomQuery)
@@ -115,36 +119,37 @@ namespace DataMovementAnalyzer
                     dgvCustom.DataSource = _getCustomQueryResults();
                 }
 
-                objTotalRowsPairList.Add((double)new XDate(dtNow), _objGraphingController.Model.CurrentRowCount);
+                objTotalRowsPairList.Add((double)new XDate(dtNow), _objGraphingModel.CurrentRowCount);
 
-                lblRowCount.Text = String.Format("Current Row Count: {0}", _objGraphingController.Model.CurrentRowCount.ToString("N0"));
+                lblRowCount.Text = String.Format("Current Row Count: {0}", _objGraphingModel.CurrentRowCount.ToString("N0"));
 
 
-                objRPSPairList.Add((double)new XDate(dtNow), _objGraphingController.Model.CurrentRPS);
+                objRPSPairList.Add((double)new XDate(dtNow), _objGraphingModel.CurrentRPS);
 
-                lblRPS.Text = String.Format("Current Rows/sec: {0}", _objGraphingController.Model.CurrentRPS.ToString("N1"));
+                lblRPS.Text = String.Format("Current Rows/sec: {0}", _objGraphingModel.CurrentRPS.ToString("N1"));
 
-                if (_objGraphingController.Model.CurrentRPS >= _objGraphingController.Model.MaxRPS)
+                if (_objGraphingModel.CurrentRPS >= _objGraphingModel.MaxRPS)
                 {
-                    lblMaxRPS.Text = String.Format("Max Rows/sec: {0}", _objGraphingController.Model.MaxRPS.ToString("N1"));
+                    lblMaxRPS.Text = String.Format("Max Rows/sec: {0}", _objGraphingModel.MaxRPS.ToString("N1"));
                 }
 
-                if (_objGraphingController.Model.CurrentRPS <= _objGraphingController.Model.MinRPS)
+                if (_objGraphingModel.CurrentRPS <= _objGraphingModel.MinRPS)
                 {
-                    lblMinRPS.Text = String.Format("Min Rows/sec: {0}", _objGraphingController.Model.MinRPS.ToString("N1"));
+                    lblMinRPS.Text = String.Format("Min Rows/sec: {0}", _objGraphingModel.MinRPS.ToString("N1"));
                 }
 
-                if (_objGraphingController.Model.CurrentRowCount >= _objGraphingController.Model.MaxRowCount)
+                if (_objGraphingModel.CurrentRowCount >= _objGraphingModel.MaxRowCount)
                 {
-                    lblMaxRowCount.Text = String.Format("Max Row Count: {0}", _objGraphingController.Model.MaxRowCount.ToString("N0"));
+                    lblMaxRowCount.Text = String.Format("Max Row Count: {0}", _objGraphingModel.MaxRowCount.ToString("N0"));
                 }
 
-                if (_objGraphingController.Model.CurrentRowCount <= _objGraphingController.Model.MinRowCount)
+                if (_objGraphingModel.CurrentRowCount <= _objGraphingModel.MinRowCount)
                 {
-                    lblMinRowCount.Text = String.Format("Min Row Count: {0}", _objGraphingController.Model.MinRowCount.ToString("N0"));
+                    lblMinRowCount.Text = String.Format("Min Row Count: {0}", _objGraphingModel.MinRowCount.ToString("N0"));
                 }
 
                 _updateGraphs();
+                _updateBindings();
             }
             catch (Exception ex)
             {
@@ -346,7 +351,7 @@ namespace DataMovementAnalyzer
 
             objTimer.Interval = _objPrefsModel.PollingFrequency * 1000;
 
-            _objGraphingController.Model = new dvvGraphingModel();
+            _objGraphingModel = new dvvGraphingModel();
 
             if (objTotalRowsPairList != null && objRPSPairList != null)
             {
@@ -521,6 +526,59 @@ namespace DataMovementAnalyzer
         private void displayError(string errorMessage)
         {
             MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void _setupBindings()
+        {
+            txtRunStartTime.DataBindings.Add("Text",
+                                _objGraphingModel,
+                                "RunStart",
+                                false,
+                                DataSourceUpdateMode.OnPropertyChanged);
+
+            txtAverageRowCount.DataBindings.Add("Text",
+                                _objGraphingModel,
+                                "AverageRowCount",
+                                false,
+                                DataSourceUpdateMode.OnPropertyChanged);
+
+            txtAverageRowCountNZ.DataBindings.Add("Text",
+                                _objGraphingModel,
+                                "AverageRowCountNZ",
+                                false,
+                                DataSourceUpdateMode.OnPropertyChanged);
+
+            txtAverageRPS.DataBindings.Add("Text",
+                                _objGraphingModel,
+                                "AverageRPS",
+                                false,
+                                DataSourceUpdateMode.OnPropertyChanged);
+
+            txtAverageRPSNZ.DataBindings.Add("Text",
+                                _objGraphingModel,
+                                "AverageRPSNZ",
+                                false,
+                                DataSourceUpdateMode.OnPropertyChanged);
+
+            txtTotalRowsMoved.DataBindings.Add("Text",
+                                _objGraphingModel,
+                                "TotalRowsMoved",
+                                false,
+                                DataSourceUpdateMode.OnPropertyChanged);
+        }
+
+        private void _updateBindings()
+        {
+            txtRunStartTime.DataBindings[0].ReadValue();
+            txtAverageRowCount.DataBindings[0].ReadValue();
+            txtAverageRowCountNZ.DataBindings[0].ReadValue();
+            txtAverageRPS.DataBindings[0].ReadValue();
+            txtAverageRPSNZ.DataBindings[0].ReadValue();
         }
 
     }
