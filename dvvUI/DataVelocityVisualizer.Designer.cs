@@ -531,7 +531,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(888, 650);
             this.Name = "DataVelocityVisualizer";
-            this.Text = "Data Movement Analyzer";
+            this.Text = "Data Velocity Visualizer";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
