@@ -82,6 +82,7 @@ namespace dvvController
             _model.RowCounts = _db.getAllRowCounts(false);
 
 
+            //Update maximums
             if (_model.CurrentRPS > _model.MaxRPS)
             {
                 _model.MaxRPS = _model.CurrentRPS;
@@ -102,11 +103,14 @@ namespace dvvController
                 _model.MinRowCount = _model.CurrentRowCount;
             }
 
-            int secondsLeft = (int)((_model.MaxRowCount - _model.CurrentRowCount) / _model.CurrentRPS);
 
-            _model.TimeLeft = new TimeSpan(0, 0, secondsLeft);
-
-            _model.EstimatedEnd = DateTime.Now + _model.TimeLeft;
+            //Calculate time remaining
+            if (_model.TickNumber != 1)
+            {
+                int secondsLeft = (int)((_model.MaxRowCount - _model.CurrentRowCount) / _model.CurrentRPS);
+                _model.TimeLeft = new TimeSpan(0, 0, secondsLeft);
+                _model.EstimatedEnd = DateTime.Now + _model.TimeLeft;
+            }            
 
             _model.TickNumber++;
 
