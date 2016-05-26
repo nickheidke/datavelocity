@@ -531,11 +531,6 @@ namespace DataMovementAnalyzer
             MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void _setupBindings()
         {
             txtRunStartTime.DataBindings.Clear();
