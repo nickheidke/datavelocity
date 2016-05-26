@@ -539,64 +539,82 @@ namespace DataMovementAnalyzer
             txtRunStartTime.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "RunStart",
-                                false,
-                                DataSourceUpdateMode.OnPropertyChanged);
+                                true,
+                                DataSourceUpdateMode.OnPropertyChanged,
+                                string.Empty,
+                                "");
 
             txtAverageRowCount.DataBindings.Clear();
             txtAverageRowCount.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "AverageRowCount",
-                                false,
-                                DataSourceUpdateMode.OnPropertyChanged);
+                                true,
+                                DataSourceUpdateMode.OnPropertyChanged,
+                                string.Empty,
+                                "N0");
 
             txtAverageRowCountNZ.DataBindings.Clear();
             txtAverageRowCountNZ.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "AverageRowCountNZ",
-                                false,
-                                DataSourceUpdateMode.OnPropertyChanged);
+                                true,
+                                DataSourceUpdateMode.OnPropertyChanged,
+                                string.Empty,
+                                "N0");
 
             txtAverageRPS.DataBindings.Clear();
             txtAverageRPS.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "AverageRPS",
-                                false,
-                                DataSourceUpdateMode.OnPropertyChanged);
+                                true,
+                                DataSourceUpdateMode.OnPropertyChanged,
+                                string.Empty,
+                                "N1");
 
             txtAverageRPSNZ.DataBindings.Clear();
             txtAverageRPSNZ.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "AverageRPSNZ",
-                                false,
-                                DataSourceUpdateMode.OnPropertyChanged);
+                                true,
+                                DataSourceUpdateMode.OnPropertyChanged,
+                                string.Empty,
+                                "N1");
 
             txtTotalRowsMoved.DataBindings.Clear();
             txtTotalRowsMoved.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "TotalRowsMoved",
-                                false,
-                                DataSourceUpdateMode.OnPropertyChanged);
+                                true,
+                                DataSourceUpdateMode.OnPropertyChanged,
+                                string.Empty,
+                                "N0");
 
             txtRunEndTime.DataBindings.Clear();
             txtRunEndTime.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "RunEnd",
-                                false,
-                                DataSourceUpdateMode.OnPropertyChanged);
+                                true,
+                                DataSourceUpdateMode.OnPropertyChanged,
+                                string.Empty,
+                                "");
 
             txtEstimatedRunTimeLeft.DataBindings.Clear();
             txtEstimatedRunTimeLeft.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "TimeLeft",
-                                false,
-                                DataSourceUpdateMode.OnPropertyChanged);
+                                true,
+                                DataSourceUpdateMode.OnPropertyChanged,
+                                string.Empty,
+                                "");
 
             txtEstimatedCompletionTime.DataBindings.Clear();
             txtEstimatedCompletionTime.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "EstimatedEnd",
-                                false,
-                                DataSourceUpdateMode.OnPropertyChanged);
+                                true,
+                                DataSourceUpdateMode.OnPropertyChanged,
+                                string.Empty,
+                                "");
         }
 
         private void _updateBindings()
