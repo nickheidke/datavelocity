@@ -1,5 +1,5 @@
 # Data Velocity Visualizer
-[![Build status](https://ci.appveyor.com/api/projects/status/93nnhu8b0ykhllgm?svg=true)](https://ci.appveyor.com/project/nickheidke/datavelocity)
+master: [![Build status](https://ci.appveyor.com/api/projects/status/93nnhu8b0ykhllgm?svg=true)](https://ci.appveyor.com/project/nickheidke/datavelocity) dev: [![Build status](https://ci.appveyor.com/api/projects/status/flajydth1buu0kie?svg=true)](https://ci.appveyor.com/project/nickheidke/datavelocity-wlv7x)
 ## About
 This tool is used to view the speed at which data is being added to or deleted from a database. Currently, this only supports SQL Server databases, but will likely be expanded to support others as well.
 ## Contributing
