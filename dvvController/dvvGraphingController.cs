@@ -57,7 +57,7 @@ namespace dvvController
             }
 
             _model.TotalTime += prefsModel.PollingFrequency;
-            _RowsMoved.Add(_model.PreviousRowCount - _model.CurrentRowCount);
+            _RowsMoved.Add(_model.CurrentRowCount - _model.PreviousRowCount);
             _model.PreviousRowCount = _model.CurrentRowCount;
 
             //Find current Row Count and store it, then calculate average
@@ -76,7 +76,8 @@ namespace dvvController
                 _model.AverageRPSNZ = _RPSs.Where(x => x != 0).Average();
             }
 
-            _model.TotalRowsMoved = _RowsMoved.Sum();
+            var absoluteValueList = _RowsMoved.Select(x => Math.Abs(x)).ToList();
+            _model.TotalRowsMoved = absoluteValueList.Sum();
 
             _model.RowCounts = _db.getAllRowCounts(false);
 
@@ -100,6 +101,12 @@ namespace dvvController
             {
                 _model.MinRowCount = _model.CurrentRowCount;
             }
+
+            int secondsLeft = (int)((_model.MaxRowCount - _model.CurrentRowCount) / _model.CurrentRPS);
+
+            _model.TimeLeft = new TimeSpan(0, 0, secondsLeft);
+
+            _model.EstimatedEnd = DateTime.Now + _model.TimeLeft;
 
             _model.TickNumber++;
 

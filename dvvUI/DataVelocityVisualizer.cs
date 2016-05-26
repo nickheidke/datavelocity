@@ -178,6 +178,8 @@ namespace DataMovementAnalyzer
             resetToolStripMenuItem.Enabled = true;
             preferencesToolStripMenuItem.Enabled = true;
             editConnectionToolStripMenuItem.Enabled = true;
+
+            _updateBindings();
         }
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
@@ -581,6 +583,20 @@ namespace DataMovementAnalyzer
                                 "RunEnd",
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
+
+            txtEstimatedRunTimeLeft.DataBindings.Clear();
+            txtEstimatedRunTimeLeft.DataBindings.Add("Text",
+                                _objGraphingModel,
+                                "TimeLeft",
+                                false,
+                                DataSourceUpdateMode.OnPropertyChanged);
+
+            txtEstimatedCompletionTime.DataBindings.Clear();
+            txtEstimatedCompletionTime.DataBindings.Add("Text",
+                                _objGraphingModel,
+                                "EstimatedEnd",
+                                false,
+                                DataSourceUpdateMode.OnPropertyChanged);
         }
 
         private void _updateBindings()
@@ -590,7 +606,10 @@ namespace DataMovementAnalyzer
             txtAverageRowCountNZ.DataBindings[0].ReadValue();
             txtAverageRPS.DataBindings[0].ReadValue();
             txtAverageRPSNZ.DataBindings[0].ReadValue();
+            txtTotalRowsMoved.DataBindings[0].ReadValue();
             txtRunEndTime.DataBindings[0].ReadValue();
+            txtEstimatedRunTimeLeft.DataBindings[0].ReadValue();
+            txtEstimatedCompletionTime.DataBindings[0].ReadValue();
         }
 
     }
