@@ -63,6 +63,35 @@
             this.zgcAllTables = new ZedGraph.ZedGraphControl();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dgvTableList = new System.Windows.Forms.DataGridView();
+            this.objAnalysis = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtRunEndTime = new System.Windows.Forms.TextBox();
+            this.txtEstimatedCompletionTime = new System.Windows.Forms.TextBox();
+            this.txtRunStartTime = new System.Windows.Forms.TextBox();
+            this.txtEstimatedRunTimeLeft = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtAverageRPSNZ = new System.Windows.Forms.TextBox();
+            this.txtAverageRPS = new System.Windows.Forms.TextBox();
+            this.txtAverageRowCountNZ = new System.Windows.Forms.TextBox();
+            this.txtAverageRowCount = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTotalRowsRemoved = new System.Windows.Forms.TextBox();
+            this.txtTotalRowsAdded = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtTotalRowsMoved = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.objTabQueryResults = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgvCustom = new System.Windows.Forms.DataGridView();
@@ -70,30 +99,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtCustomQuery = new System.Windows.Forms.RichTextBox();
             this.btnSaveCustom = new System.Windows.Forms.Button();
-            this.objAnalysis = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtEstimatedRunTimeLeft = new System.Windows.Forms.TextBox();
-            this.txtRunStartTime = new System.Windows.Forms.TextBox();
-            this.txtEstimatedCompletionTime = new System.Windows.Forms.TextBox();
-            this.txtRunEndTime = new System.Windows.Forms.TextBox();
-            this.txtAverageRowCount = new System.Windows.Forms.TextBox();
-            this.txtAverageRowCountNZ = new System.Windows.Forms.TextBox();
-            this.txtTotalRowsMoved = new System.Windows.Forms.TextBox();
-            this.txtAverageRPS = new System.Windows.Forms.TextBox();
-            this.txtAverageRPSNZ = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -105,17 +110,17 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTableList)).BeginInit();
+            this.objAnalysis.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.objTabQueryResults.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustom)).BeginInit();
             this.objTabQuery.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.objAnalysis.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // objTimer
@@ -472,6 +477,283 @@
             this.dgvTableList.Size = new System.Drawing.Size(223, 465);
             this.dgvTableList.TabIndex = 2;
             // 
+            // objAnalysis
+            // 
+            this.objAnalysis.Controls.Add(this.flowLayoutPanel1);
+            this.objAnalysis.Location = new System.Drawing.Point(4, 22);
+            this.objAnalysis.Name = "objAnalysis";
+            this.objAnalysis.Size = new System.Drawing.Size(866, 496);
+            this.objAnalysis.TabIndex = 5;
+            this.objAnalysis.Text = "Analysis";
+            this.objAnalysis.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.groupBox3);
+            this.flowLayoutPanel1.Controls.Add(this.groupBox6);
+            this.flowLayoutPanel1.Controls.Add(this.groupBox7);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(866, 496);
+            this.flowLayoutPanel1.TabIndex = 2;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtRunEndTime);
+            this.groupBox3.Controls.Add(this.txtEstimatedCompletionTime);
+            this.groupBox3.Controls.Add(this.txtRunStartTime);
+            this.groupBox3.Controls.Add(this.txtEstimatedRunTimeLeft);
+            this.groupBox3.Controls.Add(this.tableLayoutPanel4);
+            this.groupBox3.Location = new System.Drawing.Point(3, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(284, 168);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Timings";
+            // 
+            // txtRunEndTime
+            // 
+            this.txtRunEndTime.Location = new System.Drawing.Point(155, 100);
+            this.txtRunEndTime.Name = "txtRunEndTime";
+            this.txtRunEndTime.Size = new System.Drawing.Size(123, 20);
+            this.txtRunEndTime.TabIndex = 8;
+            // 
+            // txtEstimatedCompletionTime
+            // 
+            this.txtEstimatedCompletionTime.Location = new System.Drawing.Point(155, 72);
+            this.txtEstimatedCompletionTime.Name = "txtEstimatedCompletionTime";
+            this.txtEstimatedCompletionTime.Size = new System.Drawing.Size(123, 20);
+            this.txtEstimatedCompletionTime.TabIndex = 7;
+            // 
+            // txtRunStartTime
+            // 
+            this.txtRunStartTime.Location = new System.Drawing.Point(155, 16);
+            this.txtRunStartTime.Name = "txtRunStartTime";
+            this.txtRunStartTime.Size = new System.Drawing.Size(123, 20);
+            this.txtRunStartTime.TabIndex = 6;
+            // 
+            // txtEstimatedRunTimeLeft
+            // 
+            this.txtEstimatedRunTimeLeft.Location = new System.Drawing.Point(155, 44);
+            this.txtEstimatedRunTimeLeft.Name = "txtEstimatedRunTimeLeft";
+            this.txtEstimatedRunTimeLeft.Size = new System.Drawing.Size(123, 20);
+            this.txtEstimatedRunTimeLeft.TabIndex = 5;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label4, 0, 3);
+            this.tableLayoutPanel4.Controls.Add(this.label2, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 2);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(6, 19);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 5;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(150, 143);
+            this.tableLayoutPanel4.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Run Start Time:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 84);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Run End Time:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(126, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Estimated Run Time Left:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(140, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Estimated Completion Time: ";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.txtAverageRPSNZ);
+            this.groupBox6.Controls.Add(this.txtAverageRPS);
+            this.groupBox6.Controls.Add(this.txtAverageRowCountNZ);
+            this.groupBox6.Controls.Add(this.txtAverageRowCount);
+            this.groupBox6.Controls.Add(this.label9);
+            this.groupBox6.Controls.Add(this.label8);
+            this.groupBox6.Controls.Add(this.label7);
+            this.groupBox6.Controls.Add(this.label5);
+            this.groupBox6.Location = new System.Drawing.Point(293, 3);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(270, 168);
+            this.groupBox6.TabIndex = 1;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Averages";
+            // 
+            // txtAverageRPSNZ
+            // 
+            this.txtAverageRPSNZ.Location = new System.Drawing.Point(166, 100);
+            this.txtAverageRPSNZ.Name = "txtAverageRPSNZ";
+            this.txtAverageRPSNZ.Size = new System.Drawing.Size(100, 20);
+            this.txtAverageRPSNZ.TabIndex = 7;
+            // 
+            // txtAverageRPS
+            // 
+            this.txtAverageRPS.Location = new System.Drawing.Point(166, 72);
+            this.txtAverageRPS.Name = "txtAverageRPS";
+            this.txtAverageRPS.Size = new System.Drawing.Size(100, 20);
+            this.txtAverageRPS.TabIndex = 6;
+            // 
+            // txtAverageRowCountNZ
+            // 
+            this.txtAverageRowCountNZ.Location = new System.Drawing.Point(166, 44);
+            this.txtAverageRowCountNZ.Name = "txtAverageRowCountNZ";
+            this.txtAverageRowCountNZ.Size = new System.Drawing.Size(100, 20);
+            this.txtAverageRowCountNZ.TabIndex = 5;
+            // 
+            // txtAverageRowCount
+            // 
+            this.txtAverageRowCount.Location = new System.Drawing.Point(166, 16);
+            this.txtAverageRowCount.Name = "txtAverageRowCount";
+            this.txtAverageRowCount.Size = new System.Drawing.Size(100, 20);
+            this.txtAverageRowCount.TabIndex = 4;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 47);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(153, 13);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Average Row Count (nonzero):";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 19);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(106, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Average Row Count:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 103);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(122, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Average RPS (nonzero):";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 75);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Average RPS:";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.textBox1);
+            this.groupBox7.Controls.Add(this.txtTotalRowsRemoved);
+            this.groupBox7.Controls.Add(this.txtTotalRowsAdded);
+            this.groupBox7.Controls.Add(this.label11);
+            this.groupBox7.Controls.Add(this.label10);
+            this.groupBox7.Controls.Add(this.txtTotalRowsMoved);
+            this.groupBox7.Controls.Add(this.label6);
+            this.groupBox7.Location = new System.Drawing.Point(569, 3);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(248, 168);
+            this.groupBox7.TabIndex = 2;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Totals";
+            // 
+            // textBox1
+            // 
+            this.textBox1.AcceptsReturn = true;
+            this.textBox1.AcceptsTab = true;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(10, 96);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(232, 66);
+            this.textBox1.TabIndex = 6;
+            this.textBox1.Text = "*Note:\r\nThese figures are derived by seeing the difference in rows between each p" +
+    "olling period. They do not represent the true number of inserts/deletes to the d" +
+    "atabase.";
+            // 
+            // txtTotalRowsRemoved
+            // 
+            this.txtTotalRowsRemoved.Location = new System.Drawing.Point(129, 72);
+            this.txtTotalRowsRemoved.Name = "txtTotalRowsRemoved";
+            this.txtTotalRowsRemoved.Size = new System.Drawing.Size(113, 20);
+            this.txtTotalRowsRemoved.TabIndex = 5;
+            // 
+            // txtTotalRowsAdded
+            // 
+            this.txtTotalRowsAdded.Location = new System.Drawing.Point(129, 44);
+            this.txtTotalRowsAdded.Name = "txtTotalRowsAdded";
+            this.txtTotalRowsAdded.Size = new System.Drawing.Size(113, 20);
+            this.txtTotalRowsAdded.TabIndex = 4;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 75);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(117, 13);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Total Rows Removed*:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 47);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(102, 13);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Total Rows Added*:";
+            // 
+            // txtTotalRowsMoved
+            // 
+            this.txtTotalRowsMoved.Location = new System.Drawing.Point(129, 16);
+            this.txtTotalRowsMoved.Name = "txtTotalRowsMoved";
+            this.txtTotalRowsMoved.Size = new System.Drawing.Size(113, 20);
+            this.txtTotalRowsMoved.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(104, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Total Rows Moved*:";
+            // 
             // objTabQueryResults
             // 
             this.objTabQueryResults.Controls.Add(this.groupBox4);
@@ -550,232 +832,6 @@
             this.btnSaveCustom.UseVisualStyleBackColor = true;
             this.btnSaveCustom.Click += new System.EventHandler(this.btnSaveCustom_Click);
             // 
-            // objAnalysis
-            // 
-            this.objAnalysis.Controls.Add(this.flowLayoutPanel1);
-            this.objAnalysis.Location = new System.Drawing.Point(4, 22);
-            this.objAnalysis.Name = "objAnalysis";
-            this.objAnalysis.Size = new System.Drawing.Size(866, 496);
-            this.objAnalysis.TabIndex = 5;
-            this.objAnalysis.Text = "Analysis";
-            this.objAnalysis.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.txtRunEndTime);
-            this.groupBox3.Controls.Add(this.txtEstimatedCompletionTime);
-            this.groupBox3.Controls.Add(this.txtRunStartTime);
-            this.groupBox3.Controls.Add(this.txtEstimatedRunTimeLeft);
-            this.groupBox3.Controls.Add(this.tableLayoutPanel4);
-            this.groupBox3.Location = new System.Drawing.Point(3, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(268, 168);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Timings";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.txtAverageRPSNZ);
-            this.groupBox6.Controls.Add(this.txtAverageRPS);
-            this.groupBox6.Controls.Add(this.txtAverageRowCountNZ);
-            this.groupBox6.Controls.Add(this.txtAverageRowCount);
-            this.groupBox6.Controls.Add(this.label9);
-            this.groupBox6.Controls.Add(this.label8);
-            this.groupBox6.Controls.Add(this.label7);
-            this.groupBox6.Controls.Add(this.label5);
-            this.groupBox6.Location = new System.Drawing.Point(277, 3);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(270, 168);
-            this.groupBox6.TabIndex = 1;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Averages";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Estimated Completion Time: ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Estimated Run Time Left:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Run Start Time:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 84);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Run End Time:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 75);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Average RPS:";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.groupBox3);
-            this.flowLayoutPanel1.Controls.Add(this.groupBox6);
-            this.flowLayoutPanel1.Controls.Add(this.groupBox7);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(866, 496);
-            this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label4, 0, 3);
-            this.tableLayoutPanel4.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 2);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(6, 19);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 5;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(150, 143);
-            this.tableLayoutPanel4.TabIndex = 4;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.txtTotalRowsMoved);
-            this.groupBox7.Controls.Add(this.label6);
-            this.groupBox7.Location = new System.Drawing.Point(553, 3);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(219, 168);
-            this.groupBox7.TabIndex = 2;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Totals";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Total Rows Moved:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 103);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(122, 13);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Average RPS (nonzero):";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 19);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(106, 13);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Average Row Count:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 47);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(153, 13);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Average Row Count (nonzero):";
-            // 
-            // txtEstimatedRunTimeLeft
-            // 
-            this.txtEstimatedRunTimeLeft.Location = new System.Drawing.Point(155, 44);
-            this.txtEstimatedRunTimeLeft.Name = "txtEstimatedRunTimeLeft";
-            this.txtEstimatedRunTimeLeft.Size = new System.Drawing.Size(100, 20);
-            this.txtEstimatedRunTimeLeft.TabIndex = 5;
-            // 
-            // txtRunStartTime
-            // 
-            this.txtRunStartTime.Location = new System.Drawing.Point(155, 16);
-            this.txtRunStartTime.Name = "txtRunStartTime";
-            this.txtRunStartTime.Size = new System.Drawing.Size(100, 20);
-            this.txtRunStartTime.TabIndex = 6;
-            // 
-            // txtEstimatedCompletionTime
-            // 
-            this.txtEstimatedCompletionTime.Location = new System.Drawing.Point(155, 72);
-            this.txtEstimatedCompletionTime.Name = "txtEstimatedCompletionTime";
-            this.txtEstimatedCompletionTime.Size = new System.Drawing.Size(100, 20);
-            this.txtEstimatedCompletionTime.TabIndex = 7;
-            // 
-            // txtRunEndTime
-            // 
-            this.txtRunEndTime.Location = new System.Drawing.Point(155, 100);
-            this.txtRunEndTime.Name = "txtRunEndTime";
-            this.txtRunEndTime.Size = new System.Drawing.Size(100, 20);
-            this.txtRunEndTime.TabIndex = 8;
-            // 
-            // txtAverageRowCount
-            // 
-            this.txtAverageRowCount.Location = new System.Drawing.Point(166, 16);
-            this.txtAverageRowCount.Name = "txtAverageRowCount";
-            this.txtAverageRowCount.Size = new System.Drawing.Size(100, 20);
-            this.txtAverageRowCount.TabIndex = 4;
-            // 
-            // txtAverageRowCountNZ
-            // 
-            this.txtAverageRowCountNZ.Location = new System.Drawing.Point(166, 44);
-            this.txtAverageRowCountNZ.Name = "txtAverageRowCountNZ";
-            this.txtAverageRowCountNZ.Size = new System.Drawing.Size(100, 20);
-            this.txtAverageRowCountNZ.TabIndex = 5;
-            // 
-            // txtTotalRowsMoved
-            // 
-            this.txtTotalRowsMoved.Location = new System.Drawing.Point(112, 16);
-            this.txtTotalRowsMoved.Name = "txtTotalRowsMoved";
-            this.txtTotalRowsMoved.Size = new System.Drawing.Size(100, 20);
-            this.txtTotalRowsMoved.TabIndex = 1;
-            // 
-            // txtAverageRPS
-            // 
-            this.txtAverageRPS.Location = new System.Drawing.Point(166, 72);
-            this.txtAverageRPS.Name = "txtAverageRPS";
-            this.txtAverageRPS.Size = new System.Drawing.Size(100, 20);
-            this.txtAverageRPS.TabIndex = 6;
-            // 
-            // txtAverageRPSNZ
-            // 
-            this.txtAverageRPSNZ.Location = new System.Drawing.Point(166, 100);
-            this.txtAverageRPSNZ.Name = "txtAverageRPSNZ";
-            this.txtAverageRPSNZ.Size = new System.Drawing.Size(100, 20);
-            this.txtAverageRPSNZ.TabIndex = 7;
-            // 
             // DataVelocityVisualizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -803,21 +859,21 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTableList)).EndInit();
+            this.objAnalysis.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.objTabQueryResults.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustom)).EndInit();
             this.objTabQuery.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.objAnalysis.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -889,6 +945,11 @@
         private System.Windows.Forms.TextBox txtAverageRowCountNZ;
         private System.Windows.Forms.TextBox txtAverageRowCount;
         private System.Windows.Forms.TextBox txtTotalRowsMoved;
+        private System.Windows.Forms.TextBox txtTotalRowsRemoved;
+        private System.Windows.Forms.TextBox txtTotalRowsAdded;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

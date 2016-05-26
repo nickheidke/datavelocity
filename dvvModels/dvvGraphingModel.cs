@@ -10,7 +10,7 @@ namespace dvvModels
     public class dvvGraphingModel
     {
         #region PrivateFields
-        private int _iCurrentRowCount, _iTotalTime, _iInitialRows, _iPreviousRows, _iMaxRows, _iTickNumber, _iMinRows, _iStartingRowCount, _iTotalRowsMoved;
+        private int _iCurrentRowCount, _iTotalTime, _iInitialRows, _iPreviousRows, _iMaxRows, _iTickNumber, _iMinRows, _iStartingRowCount, _iTotalRowsMoved, _iTotalRowsAdded, _iTotalRowsRemoved;
         private DateTime _dRunStart, _dRunEnd, _dEstimatedEnd;
         private TimeSpan _tsTimeLeft;
         private double _dCurrentRPS, _dMaxRPS, _dMinRPS, _dAverageRowCount, _dAverageRowCountNZ, _dAverageRPS, _dAverageRPSNZ;
@@ -144,6 +144,18 @@ namespace dvvModels
         {
             get { return _dAverageRPSNZ; }
             set { _dAverageRPSNZ = value; }
+        }
+
+        public int TotalRowsRemoved
+        {
+            get { return _iTotalRowsRemoved; }
+            set { _iTotalRowsRemoved = value; }
+        }
+
+        public int TotalRowsAdded
+        {
+            get { return _iTotalRowsAdded; }
+            set { _iTotalRowsAdded = value; }
         }
         #endregion
 

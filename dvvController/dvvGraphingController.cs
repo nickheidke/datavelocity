@@ -79,6 +79,9 @@ namespace dvvController
             var absoluteValueList = _RowsMoved.Select(x => Math.Abs(x)).ToList();
             _model.TotalRowsMoved = absoluteValueList.Sum();
 
+            _model.TotalRowsAdded = _RowsMoved.Where(x => x > 0).Sum();
+            _model.TotalRowsRemoved = Math.Abs(_RowsMoved.Where(x => x < 0).Sum());
+
             _model.RowCounts = _db.getAllRowCounts(false);
 
 

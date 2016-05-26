@@ -149,7 +149,7 @@ namespace DataMovementAnalyzer
                 }
 
                 _updateGraphs();
-                _updateBindings();
+                _refreshBindings();
             }
             catch (Exception ex)
             {
@@ -179,7 +179,7 @@ namespace DataMovementAnalyzer
             preferencesToolStripMenuItem.Enabled = true;
             editConnectionToolStripMenuItem.Enabled = true;
 
-            _updateBindings();
+            _refreshBindings();
         }
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
@@ -615,9 +615,27 @@ namespace DataMovementAnalyzer
                                 DataSourceUpdateMode.OnPropertyChanged,
                                 string.Empty,
                                 "");
+
+            txtTotalRowsAdded.DataBindings.Clear();
+            txtTotalRowsAdded.DataBindings.Add("Text",
+                                _objGraphingModel,
+                                "TotalRowsAdded",
+                                true,
+                                DataSourceUpdateMode.OnPropertyChanged,
+                                string.Empty,
+                                "N0");
+
+            txtTotalRowsRemoved.DataBindings.Clear();
+            txtTotalRowsRemoved.DataBindings.Add("Text",
+                                _objGraphingModel,
+                                "TotalRowsRemoved",
+                                true,
+                                DataSourceUpdateMode.OnPropertyChanged,
+                                string.Empty,
+                                "N0");
         }
 
-        private void _updateBindings()
+        private void _refreshBindings()
         {
             txtRunStartTime.DataBindings[0].ReadValue();
             txtAverageRowCount.DataBindings[0].ReadValue();
@@ -628,6 +646,8 @@ namespace DataMovementAnalyzer
             txtRunEndTime.DataBindings[0].ReadValue();
             txtEstimatedRunTimeLeft.DataBindings[0].ReadValue();
             txtEstimatedCompletionTime.DataBindings[0].ReadValue();
+            txtTotalRowsAdded.DataBindings[0].ReadValue();
+            txtTotalRowsRemoved.DataBindings[0].ReadValue();
         }
 
     }
