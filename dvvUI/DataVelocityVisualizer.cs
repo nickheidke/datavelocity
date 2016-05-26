@@ -210,6 +210,10 @@ namespace DataMovementAnalyzer
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _clearAllStats();
+
+            _objGraphingModel = _objGraphingController.ResetModel();
+            _setupBindings();
+            _refreshBindings();
         }
 
         public void saveConfig()
@@ -353,10 +357,6 @@ namespace DataMovementAnalyzer
         {
 
             objTimer.Interval = _objPrefsModel.PollingFrequency * 1000;
-
-            _objGraphingModel = new dvvGraphingModel();
-            //_setupBindings();
-            //_updateBindings();
 
             if (objTotalRowsPairList != null && objRPSPairList != null)
             {

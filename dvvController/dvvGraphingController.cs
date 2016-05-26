@@ -43,6 +43,13 @@ namespace dvvController
             return _db.DbName;
         }
 
+        public dvvGraphingModel ResetModel()
+        {
+            _model = new dvvGraphingModel();
+
+            return _model;
+        }
+
         public dvvGraphingModel Tick(dvvPrefsModel prefsModel)
         {
             if (_model.TickNumber == 1)
