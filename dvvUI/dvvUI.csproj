@@ -7,8 +7,8 @@
     <ProjectGuid>{D8D98B4D-22BD-4E20-9145-1B8992A84785}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataMovementAnalyzer</RootNamespace>
-    <AssemblyName>DataMovementAnalyzer</AssemblyName>
+    <RootNamespace>DataVelocityVisualizer</RootNamespace>
+    <AssemblyName>DataVelocityVisualizer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -26,7 +26,7 @@
     <ProductName>Data Movement Analyzer</ProductName>
     <PublisherName>CUNA Mutual Group</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>10</ApplicationRevision>
+    <ApplicationRevision>11</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -48,7 +48,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -142,6 +142,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="DataMovementAnalyzer_TemporaryKey.pfx" />
     <None Include="dvvRules.ruleset" />
@@ -167,7 +168,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="database.png" />
-    <Content Include="DVV.ico" />
+    <Content Include="DVV.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
