@@ -171,6 +171,7 @@ namespace DataMovementAnalyzer
 
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            _objGraphingController.Stop();
             objTimer.Stop();
             startToolStripMenuItem.Enabled = true;
             stopToolStripMenuItem.Enabled = false;
@@ -352,6 +353,8 @@ namespace DataMovementAnalyzer
             objTimer.Interval = _objPrefsModel.PollingFrequency * 1000;
 
             _objGraphingModel = new dvvGraphingModel();
+            //_setupBindings();
+            //_updateBindings();
 
             if (objTotalRowsPairList != null && objRPSPairList != null)
             {
@@ -535,39 +538,52 @@ namespace DataMovementAnalyzer
 
         private void _setupBindings()
         {
+            txtRunStartTime.DataBindings.Clear();
             txtRunStartTime.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "RunStart",
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
 
+            txtAverageRowCount.DataBindings.Clear();
             txtAverageRowCount.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "AverageRowCount",
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
 
+            txtAverageRowCountNZ.DataBindings.Clear();
             txtAverageRowCountNZ.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "AverageRowCountNZ",
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
 
+            txtAverageRPS.DataBindings.Clear();
             txtAverageRPS.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "AverageRPS",
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
 
+            txtAverageRPSNZ.DataBindings.Clear();
             txtAverageRPSNZ.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "AverageRPSNZ",
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
 
+            txtTotalRowsMoved.DataBindings.Clear();
             txtTotalRowsMoved.DataBindings.Add("Text",
                                 _objGraphingModel,
                                 "TotalRowsMoved",
+                                false,
+                                DataSourceUpdateMode.OnPropertyChanged);
+
+            txtRunEndTime.DataBindings.Clear();
+            txtRunEndTime.DataBindings.Add("Text",
+                                _objGraphingModel,
+                                "RunEnd",
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
         }
@@ -579,6 +595,7 @@ namespace DataMovementAnalyzer
             txtAverageRowCountNZ.DataBindings[0].ReadValue();
             txtAverageRPS.DataBindings[0].ReadValue();
             txtAverageRPSNZ.DataBindings[0].ReadValue();
+            txtRunEndTime.DataBindings[0].ReadValue();
         }
 
     }

@@ -106,6 +106,11 @@ namespace dvvController
             return _model;
         }
 
+        public void Stop()
+        {
+            _model.RunEnd = DateTime.Now;
+        }
+
         public DataTable getAllRowCounts(bool includeZeros)
         {
             _model.RowCounts = _db.getAllRowCounts(includeZeros);
