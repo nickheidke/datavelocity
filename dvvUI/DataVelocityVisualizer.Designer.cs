@@ -96,9 +96,11 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgvCustom = new System.Windows.Forms.DataGridView();
             this.objTabQuery = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtCustomQuery = new System.Windows.Forms.RichTextBox();
             this.btnSaveCustom = new System.Windows.Forms.Button();
+            this.txtCustomQuery = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -120,6 +122,7 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustom)).BeginInit();
             this.objTabQuery.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -787,7 +790,7 @@
             // 
             // objTabQuery
             // 
-            this.objTabQuery.Controls.Add(this.tableLayoutPanel2);
+            this.objTabQuery.Controls.Add(this.tableLayoutPanel5);
             this.objTabQuery.Location = new System.Drawing.Point(4, 22);
             this.objTabQuery.Name = "objTabQuery";
             this.objTabQuery.Padding = new System.Windows.Forms.Padding(3);
@@ -796,41 +799,70 @@
             this.objTabQuery.Text = "Custom Query";
             this.objTabQuery.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel2, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.textBox3, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(860, 490);
+            this.tableLayoutPanel5.TabIndex = 4;
+            // 
+            // textBox3
+            // 
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox3.Location = new System.Drawing.Point(3, 3);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(854, 33);
+            this.textBox3.TabIndex = 0;
+            this.textBox3.Text = resources.GetString("textBox3.Text");
+            // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.AutoSize = true;
+            this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.txtCustomQuery, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnSaveCustom, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.txtCustomQuery, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 42);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.79592F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.20408F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(860, 490);
-            this.tableLayoutPanel2.TabIndex = 1;
-            // 
-            // txtCustomQuery
-            // 
-            this.txtCustomQuery.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCustomQuery.Location = new System.Drawing.Point(3, 3);
-            this.txtCustomQuery.Name = "txtCustomQuery";
-            this.txtCustomQuery.Size = new System.Drawing.Size(854, 434);
-            this.txtCustomQuery.TabIndex = 0;
-            this.txtCustomQuery.Text = "";
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.5618F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.438202F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(854, 445);
+            this.tableLayoutPanel2.TabIndex = 2;
             // 
             // btnSaveCustom
             // 
             this.btnSaveCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSaveCustom.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnSaveCustom.Location = new System.Drawing.Point(782, 464);
+            this.btnSaveCustom.Location = new System.Drawing.Point(771, 414);
+            this.btnSaveCustom.Margin = new System.Windows.Forms.Padding(8);
             this.btnSaveCustom.Name = "btnSaveCustom";
             this.btnSaveCustom.Size = new System.Drawing.Size(75, 23);
             this.btnSaveCustom.TabIndex = 1;
             this.btnSaveCustom.Text = "Save";
             this.btnSaveCustom.UseVisualStyleBackColor = true;
             this.btnSaveCustom.Click += new System.EventHandler(this.btnSaveCustom_Click);
+            // 
+            // txtCustomQuery
+            // 
+            this.txtCustomQuery.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCustomQuery.Location = new System.Drawing.Point(3, 3);
+            this.txtCustomQuery.Name = "txtCustomQuery";
+            this.txtCustomQuery.Size = new System.Drawing.Size(848, 397);
+            this.txtCustomQuery.TabIndex = 2;
+            this.txtCustomQuery.Text = "";
             // 
             // DataVelocityVisualizer
             // 
@@ -873,6 +905,8 @@
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustom)).EndInit();
             this.objTabQuery.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -912,9 +946,6 @@
         private ZedGraph.ZedGraphControl zgcRPS;
         private ZedGraph.ZedGraphControl zgcAllTables;
         private System.Windows.Forms.TabPage objTabQuery;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.RichTextBox txtCustomQuery;
-        private System.Windows.Forms.Button btnSaveCustom;
         private System.Windows.Forms.TabPage objTabQueryResults;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dgvCustom;
@@ -950,6 +981,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button btnSaveCustom;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.RichTextBox txtCustomQuery;
     }
 }
 
