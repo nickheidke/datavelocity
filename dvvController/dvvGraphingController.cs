@@ -117,7 +117,7 @@ namespace dvvController
             //Calculate time remaining
             if (_model.TickNumber != 1)
             {
-                int secondsLeft = (int)((_model.MaxRowCount - _model.CurrentRowCount) / _model.CurrentRPS);
+                int secondsLeft = (int)(_model.CurrentRPS != 0 ? ((_model.MaxRowCount - _model.CurrentRowCount) / _model.CurrentRPS) : 0);
                 _model.TimeLeft = new TimeSpan(0, 0, secondsLeft);
                 _model.EstimatedEnd = DateTime.Now + _model.TimeLeft;
             }            
