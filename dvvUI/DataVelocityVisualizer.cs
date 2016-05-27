@@ -116,7 +116,7 @@ namespace DataMovementAnalyzer
 
                 if (Prefs.RunCustomQuery)
                 {
-                    dgvCustom.DataSource = _getCustomQueryResults();
+                    dgvCustom.DataSource = _getCustomQueryResults(txtCustomQuery.Text);
                 }
 
                 objTotalRowsPairList.Add((double)new XDate(dtNow), _objGraphingModel.CurrentRowCount);
@@ -190,6 +190,9 @@ namespace DataMovementAnalyzer
             }
             else
             {
+                this.objTimer_Tick(null, null);
+
+
                 objTimer.Start();
                 stopToolStripMenuItem.Enabled = true;
                 startToolStripMenuItem.Enabled = false;
@@ -401,18 +404,14 @@ namespace DataMovementAnalyzer
 
         
 
-        private DataTable _getCustomQueryResults()
+        private DataTable _getCustomQueryResults(string query)
         {
-            string sSQL = "";
-
-            if (string.IsNullOrEmpty(sSQL))
+            if (string.IsNullOrEmpty(query))
             {
                 throw new ApplicationException("Custom query set to run, but no custom query present. Either disable custom query in the options or enter one on the Custom Query tab.");
             }
 
-            sSQL = txtCustomQuery.Text;
-
-            return _objGraphingController.getCustomResults(sSQL); ;
+            return _objGraphingController.getCustomResults(query); ;
         }
 
         

@@ -144,7 +144,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DataMovementAnalyzer_TemporaryKey.pfx" />
     <None Include="dvvRules.ruleset" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
