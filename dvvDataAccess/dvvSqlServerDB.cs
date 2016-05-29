@@ -85,7 +85,10 @@ namespace DataAccess
         {
             int iResult;
 
-            _conn.Open();
+            if (_conn.State != ConnectionState.Open)
+            {
+                _conn.Open();
+            }
 
             SqlCommand command = new SqlCommand(sQuery, _conn);
 
@@ -101,7 +104,10 @@ namespace DataAccess
             DataTable objResult;
             SqlDataReader objReader;
 
-            _conn.Open();
+            if (_conn.State != ConnectionState.Open)
+            {
+                _conn.Open();
+            }
 
             SqlCommand command = new SqlCommand(sQuery, _conn);
 
