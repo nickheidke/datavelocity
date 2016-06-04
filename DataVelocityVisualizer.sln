@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvModels", "dvvModels\dvvM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvController", "dvvController\dvvController.csproj", "{E17CA4E6-828C-418A-AFB4-D3EC694140A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvWeb", "dvvWeb\dvvWeb.csproj", "{F5797484-ED1C-4A15-B652-52A78804F0FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{E17CA4E6-828C-418A-AFB4-D3EC694140A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E17CA4E6-828C-418A-AFB4-D3EC694140A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E17CA4E6-828C-418A-AFB4-D3EC694140A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5797484-ED1C-4A15-B652-52A78804F0FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5797484-ED1C-4A15-B652-52A78804F0FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5797484-ED1C-4A15-B652-52A78804F0FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5797484-ED1C-4A15-B652-52A78804F0FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
