@@ -1,4 +1,7 @@
-﻿@{
+﻿@model dvvWeb.Models.ConfigModel
+
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -31,18 +34,19 @@
         $(function () {
             // Reference the auto-generated proxy for the hub.  
             var chart = $.connection.chartHub;
-            //alert('inital function hit');
+
             // Create a function that the hub can call back to display messages.
-            chart.client.addPointToChart = function () {
+            chart.client.addPointToChart = function (point) {
                 var now = moment();
                 var newData = [];
-                newData.push({x: now, y: i });
+                newData.push({x: now, y: point });
                 Graph2d.itemsData.add(newData);
                 i++;
             };
+
             $.connection.hub.start().done(function () {
                 //alert('initializing server');
-                chart.server.start();
+                chart.server.start('@Server.UrlEncode(Model.Servername)', '@Server.UrlEncode(Model.DbName)', '@Model.Preferences.NumberOfPoints', '@Model.Preferences.PollingFrequency');
             });
         });
         // This optional function html-encodes messages for display in the page.

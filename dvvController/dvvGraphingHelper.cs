@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using dvvModels;
 using DataAccess;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace dvvHelpers
 {
@@ -22,6 +23,16 @@ namespace dvvHelpers
         public dvvGraphingHelper(dvvGraphingModel model, string connectionstring){
             _model = model;
             _db = new dvvSqlServerDB(connectionstring);
+
+            _RowCounts = new List<int>();
+            _RPSs = new List<double>();
+            _RowsMoved = new List<int>();
+        }
+
+        public dvvGraphingHelper(dvvGraphingModel model, string serverName, string dbName)
+        {
+            _model = model;
+            _db = new dvvSqlServerDB("Integrated Security=SSPI;Initial Catalog=" + dbName + ";Data Source=" + serverName+";");
 
             _RowCounts = new List<int>();
             _RPSs = new List<double>();

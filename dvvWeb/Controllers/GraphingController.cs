@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dvvWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,10 @@ namespace dvvWeb.Controllers
         // GET: /Graphing/
         public ActionResult Index()
         {
-            return View();
+            ConfigModel model;
+            model = (ConfigModel)Session["config"];
+
+            return View(model);
         }
 
         public ActionResult MakeChart()

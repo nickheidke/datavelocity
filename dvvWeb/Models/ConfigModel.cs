@@ -14,7 +14,7 @@ namespace dvvWeb.Models
         string _servername, _dbName;
 
 
-        public void CongfigModel()
+        public ConfigModel()
         {
             _preferences = new dvvPrefsModel();
         }
