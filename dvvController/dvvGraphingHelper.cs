@@ -7,9 +7,9 @@ using dvvModels;
 using DataAccess;
 using System.Data;
 
-namespace dvvController
+namespace dvvHelpers
 {
-    public class dvvGraphingController
+    public class dvvGraphingHelper
     {
         #region PrivateFields
         private dvvGraphingModel _model;
@@ -19,7 +19,7 @@ namespace dvvController
         #endregion
 
         #region Constructors
-        public dvvGraphingController(dvvGraphingModel model, string connectionstring){
+        public dvvGraphingHelper(dvvGraphingModel model, string connectionstring){
             _model = model;
             _db = new dvvSqlServerDB(connectionstring);
 

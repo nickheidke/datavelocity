@@ -192,9 +192,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\dvvController\dvvController.csproj">
+    <ProjectReference Include="..\dvvController\dvvHelpers.csproj">
       <Project>{e17ca4e6-828c-418a-afb4-d3ec694140a2}</Project>
-      <Name>dvvController</Name>
+      <Name>dvvHelpers</Name>
     </ProjectReference>
     <ProjectReference Include="..\dvvModels\dvvModels.csproj">
       <Project>{35c8a4bd-0159-4e2c-ae5b-f6f55f4720fb}</Project>

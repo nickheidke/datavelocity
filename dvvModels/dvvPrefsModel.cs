@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,14 +62,14 @@ namespace dvvModels
             set { _bTopColumnsScaleLog = value; _bTopColumnsScaleLinear = !value; }
         }
 
-
+        [DisplayName("Number of Points")]
         public int NumberOfPoints
         {
             get { return _iNumberofPoints; }
             set { _iNumberofPoints = value; }
         }
 
-
+        [DisplayName("Polling Frequency")]
         public int PollingFrequency
         {
             get { return _iPollingFrequency; }

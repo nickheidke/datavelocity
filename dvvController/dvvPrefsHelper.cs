@@ -5,16 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dvvController
+namespace dvvHelpers
 {
-    public class dvvPrefsController
+    public class dvvPrefsHelper
     {
         #region PrivateFields
         dvvPrefsModel _model;
         #endregion
 
         #region Constructors
-        public dvvPrefsController(dvvPrefsModel model)
+        public dvvPrefsHelper(dvvPrefsModel model)
         {
             _model = model;
         }

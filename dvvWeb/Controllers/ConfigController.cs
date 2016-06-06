@@ -13,7 +13,22 @@ namespace dvvWeb.Controllers
         // GET: /Config/
         public ActionResult Index()
         {
-            ConfigModel model = new ConfigModel();
+            ConfigModel model;
+            model = (ConfigModel)Session["config"];
+
+            if (model == null)
+            {
+                model = new ConfigModel();
+            }
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Index(ConfigModel model)
+        {
+            Session.Add("config", model);
+
             return View(model);
         }
 	}

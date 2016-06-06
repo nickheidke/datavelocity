@@ -12,9 +12,19 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ConfigModel</h4>
+        <h4>Configuration</h4>
         <hr />
         @Html.ValidationSummary(true)
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Servername, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Servername)
+                @Html.ValidationMessageFor(model => model.Servername)
+            </div>
+        </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.DbName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -24,10 +34,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Servername, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Preferences.NumberOfPoints, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Servername)
-                @Html.ValidationMessageFor(model => model.Servername)
+                @Html.EditorFor(model => model.Preferences.NumberOfPoints)
+                @Html.ValidationMessageFor(model => model.Preferences.NumberOfPoints)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Preferences.PollingFrequency, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Preferences.PollingFrequency)
+                @Html.ValidationMessageFor(model => model.Preferences.PollingFrequency)
             </div>
         </div>
 

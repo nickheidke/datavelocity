@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvDataAccess", "dvvDataAcc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvModels", "dvvModels\dvvModels.csproj", "{35C8A4BD-0159-4E2C-AE5B-F6F55F4720FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvController", "dvvController\dvvController.csproj", "{E17CA4E6-828C-418A-AFB4-D3EC694140A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvHelpers", "dvvController\dvvHelpers.csproj", "{E17CA4E6-828C-418A-AFB4-D3EC694140A2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dvvWeb", "dvvWeb\dvvWeb.csproj", "{F5797484-ED1C-4A15-B652-52A78804F0FD}"
 EndProject

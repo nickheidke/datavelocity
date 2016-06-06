@@ -13,7 +13,7 @@ using Microsoft.Data.ConnectionUI;
 using ZedGraph;
 using System.IO;
 using dvvModels;
-using dvvController;
+using dvvHelpers;
 
 namespace DataMovementAnalyzer
 {
@@ -25,8 +25,8 @@ namespace DataMovementAnalyzer
         dvvPrefsModel _objPrefsModel;
         dvvGraphingModel _objGraphingModel;
 
-        dvvGraphingController _objGraphingController;
-        dvvPrefsController _objPrefsController;
+        dvvGraphingHelper _objGraphingController;
+        dvvPrefsHelper _objPrefsController;
 
         
         RollingPointPairList objTotalRowsPairList, objRPSPairList;
@@ -58,7 +58,7 @@ namespace DataMovementAnalyzer
 
             _setupBindings();
 
-            _objGraphingController = new dvvGraphingController(_objGraphingModel, _sConnectionString);
+            _objGraphingController = new dvvGraphingHelper(_objGraphingModel, _sConnectionString);
 
             txtDBName.Text = _objGraphingController.GetDatabaseName();
 
