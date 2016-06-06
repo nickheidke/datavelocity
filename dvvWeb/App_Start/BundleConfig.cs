@@ -39,8 +39,16 @@ namespace dvvWeb
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/chart").Include(
-                        "~/Scripts/Chart.bundle.js"));
+            bundles.Add(new StyleBundle("~/Content/viscss").Include("~/Content/vis.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/vis").Include(
+                        "~/Scripts/vis.js",
+                        "~/Scripts/vis-graph3d.min.js",
+                        "~/Scripts/vis-network.min.js",
+                        "~/Scripts/vis-timeline-graph2d.min.js",
+                        "~/Scripts/Moment.js"));
+
+
 
             bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
                         "~/Scripts/jquery.signalR-{version}.js"));

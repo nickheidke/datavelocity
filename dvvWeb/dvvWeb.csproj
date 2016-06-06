@@ -185,6 +185,22 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\network\acceptDeleteIcon.png" />
+    <Content Include="Content\img\network\addNodeIcon.png" />
+    <Content Include="Content\img\network\backIcon.png" />
+    <Content Include="Content\img\network\connectIcon.png" />
+    <Content Include="Content\img\network\cross.png" />
+    <Content Include="Content\img\network\cross2.png" />
+    <Content Include="Content\img\network\deleteIcon.png" />
+    <Content Include="Content\img\network\downArrow.png" />
+    <Content Include="Content\img\network\editIcon.png" />
+    <Content Include="Content\img\network\leftArrow.png" />
+    <Content Include="Content\img\network\minus.png" />
+    <Content Include="Content\img\network\plus.png" />
+    <Content Include="Content\img\network\rightArrow.png" />
+    <Content Include="Content\img\network\upArrow.png" />
+    <Content Include="Content\img\network\zoomExtends.png" />
+    <Content Include="Content\img\timeline\delete.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -239,6 +255,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\vis.css" />
+    <Content Include="Content\vis.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -250,12 +268,12 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\vis.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\dvvLogo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Chart.bundle.js" />
-    <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -273,6 +291,12 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Moment.js" />
+    <Content Include="Scripts\vis-graph3d.min.js" />
+    <Content Include="Scripts\vis-network.min.js" />
+    <Content Include="Scripts\vis-timeline-graph2d.min.js" />
+    <Content Include="Scripts\vis.js" />
+    <Content Include="Scripts\vis.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
