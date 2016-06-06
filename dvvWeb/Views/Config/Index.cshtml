@@ -3,17 +3,15 @@
 @{
     ViewBag.Title = "Configuration";
 }
-
-<h2>Index</h2>
-
-
+        <h2>Configuration</h2>
+        <hr />
+<article>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Configuration</h4>
-        <hr />
+
         @Html.ValidationSummary(true)
         
 
@@ -56,10 +54,29 @@
         </div>
     </div>
 }
+    </article>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<aside>
+    <h3>What are these?</h3>
+    <ul>
+        <li>
+            <h6>Server Name</h6>
+            The SQL Server instance that will be queried.
+        </li>
+        <li>
+            <h6>Database Name</h6>
+            The initial catalog that queries will be executed against. This can be overriden using "USE" statements in custom queries.
+        </li>
+        <li>
+            <h6>Number of Points</h6>
+            The number of data points that will be displayed before rolling off. 200 is a good place to start.
+        </li>
+        <li>
+            <h6>Polling Frequency</h6>
+            The number of seconds between each time the database is sampled. 10 is a good place to start.
+        </li>
+    </ul>
+</aside>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -19,14 +19,14 @@
                 </div>
                 <div class="float-right">
                     <section id="login">
-                       Hello, <span class="username">@User.Identity.Name</span>!
+                       Logged in user: <span class="username">@User.Identity.Name</span>!
                     </section>
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("Graphing", "Index", "Graphing")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Config", "Index", "Config")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
                         </ul>
                     </nav>
                 </div>

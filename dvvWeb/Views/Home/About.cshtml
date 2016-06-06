@@ -1,34 +1,20 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-
-<hgroup class="title">
+﻿<hgroup class="title">
     <h1>@ViewBag.Title.</h1>
     <h2>@ViewBag.Message</h2>
 </hgroup>
 
 <article>
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    <p>
-        Use this area to provide additional information.
-    </p>
-</article>
-
-<aside>
-    <h3>Aside Title</h3>
-    <p>
-        Use this area to provide additional information.
-    </p>
     <ul>
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+        <li>
+            <h5>What database platforms (RDBMS) are supported?</h5>
+            At this time, only <b>SQL Server</b> is supported. Versions 2005 and later should operate correctly.
+        </li>
+        <li>
+            <h5>Will this slow or block my database?</h5>
+            <b>Maybe.</b> The queries used to determine rows per second (RPS) are non-blocking as they only
+            query system (sys) tables, not the tables themselves. This does introduce the potential for
+            data being slightly behind "live", but prevents blocking. If any custom queries are being
+            used, there's nothing to prevent those custom queries from introducing blocking.
+        </li>
     </ul>
-</aside>
+</article>

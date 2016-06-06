@@ -17,7 +17,8 @@ namespace dvvWeb.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "What's this for?";
+            ViewBag.Title = "FAQs";
+            ViewBag.Message = "Frequently asked questions";
 
             return View();
         }

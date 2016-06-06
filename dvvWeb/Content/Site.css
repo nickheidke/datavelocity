@@ -85,6 +85,10 @@ h5, h6 {
     font-size: 1em;
 }
 
+h6 {
+    -webkit-margin-before:.5em !important;
+}
+
     h5 a:link, h5 a:visited, h5 a:active {
         padding: 0;
         text-decoration: none;

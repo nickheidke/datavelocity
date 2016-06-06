@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using dvvModels;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace dvvWeb.Models
 {
@@ -18,12 +19,14 @@ namespace dvvWeb.Models
             _preferences = new dvvPrefsModel();
         }
 
+        
         public dvvPrefsModel Preferences
         {
             get { return _preferences; }
             set { _preferences = value; }
         }
-        
+
+        [Required]
         [DisplayName("Database Name")]
         public string DbName
         {
@@ -31,6 +34,7 @@ namespace dvvWeb.Models
             set { _dbName = value; }
         }
 
+        [Required]
         [DisplayName("Server Name")]
         public string Servername
         {
