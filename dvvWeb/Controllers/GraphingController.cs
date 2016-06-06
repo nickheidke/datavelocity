@@ -14,5 +14,10 @@ namespace dvvWeb.Controllers
         {
             return View();
         }
+
+        public ActionResult MakeChart()
+        {
+            return View();
+        }
 	}
 }

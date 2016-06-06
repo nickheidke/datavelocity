@@ -281,6 +281,7 @@
     <None Include="readme.txt" />
     <Content Include="Views\Config\Index.cshtml" />
     <Content Include="Views\Graphing\Index.cshtml" />
+    <Content Include="Views\Graphing\MakeChart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
