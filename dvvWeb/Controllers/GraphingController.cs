@@ -16,6 +16,11 @@ namespace dvvWeb.Controllers
             ConfigModel model;
             model = (ConfigModel)Session["config"];
 
+            if (model == null)
+            {
+                return RedirectToAction("Index", "Config", null);
+            }
+
             return View(model);
         }
 

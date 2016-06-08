@@ -31,7 +31,7 @@ namespace dvvWeb.Hubs
             while (true)
             {
                 Clients.Caller.addPointToChart(graphingModel.CurrentRowCount);
-                System.Threading.Thread.Sleep(config.Preferences.PollingFrequency * 10000);
+                System.Threading.Thread.Sleep(config.Preferences.PollingFrequency * 1000);
                 graphingModel = graphingHelper.Tick(config.Preferences);
             }
         }

@@ -19,8 +19,12 @@ namespace dvvWeb.Controllers
             if (model == null)
             {
                 model = new ConfigModel();
+
+                //Let's set some defaults so we don't get ugly 0's on the form
+                model.Preferences.NumberOfPoints = 200;
+                model.Preferences.PollingFrequency = 10;
             }
-            
+           
             return View(model);
         }
 

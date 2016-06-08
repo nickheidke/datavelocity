@@ -48,10 +48,12 @@ namespace dvvWeb
                         "~/Scripts/vis-timeline-graph2d.min.js",
                         "~/Scripts/Moment.js"));
 
-
-
             bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
                         "~/Scripts/jquery.signalR-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/my").Include(
+                        "~/Scripts/my/Main.js",
+                        "~/Scripts/my/Views/Graphing.js"));
         }
     }
 }

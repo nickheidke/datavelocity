@@ -6,3 +6,5 @@
 /// <reference path="modernizr-2.6.2.js" />
 /// <reference path="vis.js" />
 /// <reference path="vis-timeline-graph2d.min.js" />
+/// <reference path="my/Main.js" />
+/// <reference path="my/Views/Graphing.js" />
