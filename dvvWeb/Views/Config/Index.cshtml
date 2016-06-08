@@ -79,5 +79,10 @@
 </aside>
 
 @section Scripts {
+    <script>
+        $(document).ready(function () {
+            my.Views.Config.init();
+        });
+    </script>
     @Scripts.Render("~/bundles/jqueryval")
 }

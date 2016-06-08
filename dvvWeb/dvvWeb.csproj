@@ -293,6 +293,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Moment.js" />
     <Content Include="Scripts\my\Main.js" />
+    <Content Include="Scripts\my\Views\Config.js" />
     <Content Include="Scripts\my\Views\Graphing.js" />
     <Content Include="Scripts\vis-graph3d.min.js" />
     <Content Include="Scripts\vis-network.min.js" />

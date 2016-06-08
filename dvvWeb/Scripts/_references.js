@@ -8,3 +8,4 @@
 /// <reference path="vis-timeline-graph2d.min.js" />
 /// <reference path="my/Main.js" />
 /// <reference path="my/Views/Graphing.js" />
+/// <reference path="my/Views/Config.js" />
