@@ -6,8 +6,8 @@ my.Views.Config = (function ($) {
     var init = function init() {
     }
 
-    return {
-        init: init
-    };
+return {
+    init: init
+};
 
 })(this.jQuery);

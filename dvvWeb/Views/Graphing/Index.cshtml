@@ -11,11 +11,35 @@
 
 <h2>Graphing</h2>
 
+<div>
+    <h3>Statistics</h3>
+    <div class="stat-box">
+            <h4>Timings</h4>
+            <label>Run Start Time:</label><input type="text" id="runStartTime"/>
+            <label>Last Updated:</label><input type="text" id="lastUpdated"/>
+            <label>Estimated Time Left:</label><input type="text" id="estTimeLeft"/>
+    </div>
+    <div class="stat-box">
+            <h4>Averages</h4>
+            <label>Average Row Count:</label><input type="text" id="avgRowCount"/>
+            <label>Average Row Count (non-zero):</label><input type="text" id="avgRowCountNZ"/>
+            <label>Average RPS:</label><input type="text" id="avgRPS"/>
+            <label>Average RPS (non-zero):</label><input type="text" id="avgRPSNZ"/>
+    </div>
+    <div class="stat-box">
+            <h4>Totals</h4>
+            <label>Total Rows Moved*:</label><input type="text" id="totalRowsMoved"/>
+            <label>Total Rows Added*:</label><input type="text" id="totalRowsAdded"/>
+            <label>Total Rows Removed*:</label><input type="text" id="totalRowsRemoved"/>
+            <div style="width:200px">*Note: These figures are derived by seeing the difference in rows between each polling period. They do not represent the true number of inserts/deletes to the database.</div>
+    </div>
+</div>
+<div style="clear:both">
     <h3>Total Rows</h3>
     <div id="totalRowsGraph"></div>
     <h3>Rows Per Second (RPS)</h3>
     <div id="rpsGraph"></div>
-
+</div>
 
 @section Scripts {
     <script src="Scripts/jquery.signalR-2.2.0.min.js"></script>

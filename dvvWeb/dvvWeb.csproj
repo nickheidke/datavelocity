@@ -292,6 +292,7 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Moment.js" />
+    <Content Include="Scripts\my\Common\Utilities.js" />
     <Content Include="Scripts\my\Main.js" />
     <Content Include="Scripts\my\Views\Config.js" />
     <Content Include="Scripts\my\Views\Graphing.js" />

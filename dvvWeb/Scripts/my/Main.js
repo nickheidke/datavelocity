@@ -6,7 +6,7 @@
     // Declare the global namespaces which will be used for custom JavaScript files, and attach the namespaces to the window object.
     var _my = _my || {};
     global.my = _my;
-    //global.my.Common = _my.Common || {};
+    global.my.Common = _my.Common || {};
     global.my.Views = _my.Views || {};
 
 })(this);

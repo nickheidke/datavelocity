@@ -2,6 +2,7 @@
 
 my.Views.Graphing = (function ($) {
     "use strict";
+    var runStart;
 
     var init = function init(_serverName, _dbName, _numberOfPoints, _pollingFrequency) {
 
@@ -22,19 +23,34 @@ my.Views.Graphing = (function ($) {
         var chart = $.connection.chartHub;
 
         // Create a function that the hub can call back to display messages.
-        chart.client.addPointToChart = function (totalsPoint, rpsPoint) {
+        chart.client.addPointToChart = function (data) {
             var now = moment();
+            var graphingModel = JSON.parse(data);
             var newData = [];
-            newData.push({ x: now, y: totalsPoint });
+            newData.push({ x: now, y: graphingModel.CurrentRowCount });
             totalsGraph2D.itemsData.add(newData);
 
             newData = [];
-            newData.push({ x: now, y: rpsPoint });
+            newData.push({ x: now, y: graphingModel.CurrentRPS });
             rpsGraph2D.itemsData.add(newData);
-        };
+
+            $("#runStartTime").val(runStart.format("YYYY-MM-DD h:mm:ss a"));
+            $("#lastUpdated").val(now.format("YYYY-MM-DD h:mm:ss a"));
+            $("#estTimeLeft").val(graphingModel.TimeLeft);
+
+            $("#avgRowCount").val(my.Common.Utilities.commafy(graphingModel.AverageRowCount.toFixed(0).toLocaleString()));
+            $("#avgRowCountNZ").val(my.Common.Utilities.commafy(graphingModel.AverageRowCountNZ.toFixed(0).toLocaleString()));
+            $("#avgRPS").val(my.Common.Utilities.commafy(graphingModel.AverageRPS.toFixed(1)));
+            $("#avgRPSNZ").val(my.Common.Utilities.commafy(graphingModel.AverageRPSNZ.toFixed(1).toLocaleString()));
+
+            $("#totalRowsMoved").val(my.Common.Utilities.commafy(graphingModel.TotalRowsMoved.toFixed(0).toLocaleString()));
+            $("#totalRowsAdded").val(my.Common.Utilities.commafy(graphingModel.TotalRowsAdded.toFixed(0).toLocaleString()));
+            $("#totalRowsRemoved").val(my.Common.Utilities.commafy(graphingModel.TotalRowsRemoved.toFixed(0).toLocaleString()));
+        }
 
         $.connection.hub.start().done(function () {
             //alert('initializing server');
+            runStart = moment();
             chart.server.start(_serverName, _dbName, _numberOfPoints, _pollingFrequency);
         });
     }

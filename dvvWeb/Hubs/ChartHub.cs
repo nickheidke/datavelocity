@@ -7,6 +7,7 @@ using dvvWeb.Models;
 using dvvModels;
 using dvvHelpers;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace dvvWeb.Hubs
 {
@@ -30,7 +31,7 @@ namespace dvvWeb.Hubs
 
             while (true)
             {
-                Clients.Caller.addPointToChart(graphingModel.CurrentRowCount, graphingModel.CurrentRPS);
+                Clients.Caller.addPointToChart(JsonConvert.SerializeObject(graphingModel));
                 System.Threading.Thread.Sleep(config.Preferences.PollingFrequency * 1000);
                 graphingModel = graphingHelper.Tick(config.Preferences);
             }

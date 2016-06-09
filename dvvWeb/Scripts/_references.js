@@ -9,3 +9,4 @@
 /// <reference path="my/Main.js" />
 /// <reference path="my/Views/Graphing.js" />
 /// <reference path="my/Views/Config.js" />
+/// <reference path="my/Common/Utilities.js" />

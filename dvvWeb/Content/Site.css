@@ -313,6 +313,11 @@ article {
     width: 70%;
 }
 
+.stat-box {
+    float: left;
+    margin: 10px;
+}
+
 aside {
     float: right;
     width: 25%;
@@ -435,7 +440,7 @@ input, textarea {
     font-size: 1.2em;
     margin: 5px 0 6px 0;
     padding: 5px;
-    width: 300px;
+    width: 200px;
 }
 
 textarea {
