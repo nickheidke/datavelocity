@@ -38,6 +38,11 @@ my.Views.Graphing = (function ($) {
             $("#lastUpdated").val(now.format("YYYY-MM-DD h:mm:ss a"));
             $("#estTimeLeft").val(graphingModel.TimeLeft);
 
+            $("#maxRowCount").val(my.Common.Utilities.commafy(graphingModel.MaxRowCount.toFixed(0).toLocaleString()));
+            $("#minRowCount").val(my.Common.Utilities.commafy(graphingModel.MinRowCount.toFixed(0).toLocaleString()));
+            $("#maxRPS").val(my.Common.Utilities.commafy(graphingModel.MaxRPS.toFixed(1).toLocaleString()));
+            $("#minRPS").val(my.Common.Utilities.commafy(graphingModel.MinRPS.toFixed(1).toLocaleString()));
+
             $("#avgRowCount").val(my.Common.Utilities.commafy(graphingModel.AverageRowCount.toFixed(0).toLocaleString()));
             $("#avgRowCountNZ").val(my.Common.Utilities.commafy(graphingModel.AverageRowCountNZ.toFixed(0).toLocaleString()));
             $("#avgRPS").val(my.Common.Utilities.commafy(graphingModel.AverageRPS.toFixed(1)));
