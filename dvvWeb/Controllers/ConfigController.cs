@@ -29,11 +29,11 @@ namespace dvvWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(ConfigModel model)
+        public ActionResult Index(string action, ConfigModel model)
         {
             Session.Add("config", model);
 
-            return View(model);
+            return RedirectToAction("Index", "Graphing");
         }
 	}
 }

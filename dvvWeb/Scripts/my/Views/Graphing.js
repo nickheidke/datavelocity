@@ -38,6 +38,11 @@ my.Views.Graphing = (function ($) {
             $("#lastUpdated").val(now.format("YYYY-MM-DD h:mm:ss a"));
             $("#estTimeLeft").val(graphingModel.TimeLeft);
 
+            var elem = document.getElementById("currentRowCount");
+            elem.innerHTML = "(" + my.Common.Utilities.commafy(graphingModel.CurrentRowCount.toFixed(0).toLocaleString()) + " currently)";
+            elem = document.getElementById("currentRPS");
+            elem.innerHTML = "(" + my.Common.Utilities.commafy(graphingModel.CurrentRPS.toFixed(0).toLocaleString()) + " currently)";
+
             $("#maxRowCount").val(my.Common.Utilities.commafy(graphingModel.MaxRowCount.toFixed(0).toLocaleString()));
             $("#minRowCount").val(my.Common.Utilities.commafy(graphingModel.MinRowCount.toFixed(0).toLocaleString()));
             $("#maxRPS").val(my.Common.Utilities.commafy(graphingModel.MaxRPS.toFixed(1).toLocaleString()));

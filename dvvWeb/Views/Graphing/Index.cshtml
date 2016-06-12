@@ -17,7 +17,8 @@
             <h4>Timings</h4>
             <label>Run Start Time:</label><input type="text" id="runStartTime"/>
             <label>Last Updated:</label><input type="text" id="lastUpdated"/>
-            <label>Estimated Time Left:</label><input type="text" id="estTimeLeft"/>
+            <label>Estimated Time Left*:</label><input type="text" id="estTimeLeft"/>
+            <div style="width:200px">*Note: Will be zero unless current row count < max row count.</div>
     </div>
     <div class="stat-box">
             <h4>Maxes and Mins</h4>
@@ -42,9 +43,9 @@
     </div>
 </div>
 <div style="clear:both">
-    <h3>Total Rows</h3>
+    <h3>Total Rows <span id="currentRowCount"></span></h3>
     <div id="totalRowsGraph"></div>
-    <h3>Rows Per Second (RPS)</h3>
+    <h3>Rows Per Second (RPS) <span id="currentRPS"></span></h3>
     <div id="rpsGraph"></div>
 </div>
 
