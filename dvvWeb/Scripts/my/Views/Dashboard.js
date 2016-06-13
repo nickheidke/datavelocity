@@ -1,6 +1,6 @@
 ﻿/*global my */
 
-my.Views.Graphing = (function ($) {
+my.Views.Dashboard = (function ($) {
     "use strict";
     var runStart;
 

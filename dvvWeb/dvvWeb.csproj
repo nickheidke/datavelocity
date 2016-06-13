@@ -171,7 +171,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ConfigController.cs" />
-    <Compile Include="Controllers\GraphingController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -296,7 +296,7 @@
     <Content Include="Scripts\my\Common\Utilities.js" />
     <Content Include="Scripts\my\Main.js" />
     <Content Include="Scripts\my\Views\Config.js" />
-    <Content Include="Scripts\my\Views\Graphing.js" />
+    <Content Include="Scripts\my\Views\Dashboard.js" />
     <Content Include="Scripts\vis-graph3d.min.js" />
     <Content Include="Scripts\vis-network.min.js" />
     <Content Include="Scripts\vis-timeline-graph2d.min.js" />
@@ -340,7 +340,7 @@
     </Content>
     <None Include="readme.txt" />
     <Content Include="Views\Config\Index.cshtml" />
-    <Content Include="Views\Graphing\Index.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

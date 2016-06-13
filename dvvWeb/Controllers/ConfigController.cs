@@ -7,33 +7,33 @@ using System.Web.Mvc;
 
 namespace dvvWeb.Controllers
 {
-    public class ConfigController : Controller
-    {
-        //
-        // GET: /Config/
-        public ActionResult Index()
-        {
-            ConfigModel model;
-            model = (ConfigModel)Session["config"];
+	public class ConfigController : Controller
+	{
+		//
+		// GET: /Config/
+		public ActionResult Index()
+		{
+			ConfigModel model;
+			model = (ConfigModel)Session["config"];
 
-            if (model == null)
-            {
-                model = new ConfigModel();
+			if (model == null)
+			{
+				model = new ConfigModel();
 
-                //Let's set some defaults so we don't get ugly 0's on the form
-                model.Preferences.NumberOfPoints = 200;
-                model.Preferences.PollingFrequency = 10;
-            }
-           
-            return View(model);
-        }
+				//Let's set some defaults so we don't get ugly 0's on the form
+				model.Preferences.NumberOfPoints = 200;
+				model.Preferences.PollingFrequency = 10;
+			}
+		   
+			return View(model);
+		}
 
-        [HttpPost]
-        public ActionResult Index(string action, ConfigModel model)
-        {
-            Session.Add("config", model);
+		[HttpPost]
+		public ActionResult Index(string action, ConfigModel model)
+		{
+			Session.Add("config", model);
 
-            return RedirectToAction("Index", "Graphing");
-        }
+			return RedirectToAction("Index", "Dashboard");
+		}
 	}
 }

@@ -6,7 +6,7 @@
 }
 
 @{
-    ViewBag.Title = "Graphing";
+    ViewBag.Title = "Dashboard";
 }
 
 <h2>Graphing</h2>
@@ -62,7 +62,7 @@
 
     <script>
         $(document).ready(function () {
-            my.Views.Graphing.init('@Server.UrlEncode(Model.Servername)', '@Server.UrlEncode(Model.DbName)', '@Server.UrlEncode(Model.Preferences.NumberOfPoints.ToString())', '@Server.UrlEncode(Model.Preferences.PollingFrequency.ToString())');
+            my.Views.Dashboard.init('@Server.UrlEncode(Model.Servername)', '@Server.UrlEncode(Model.DbName)', '@Server.UrlEncode(Model.Preferences.NumberOfPoints.ToString())', '@Server.UrlEncode(Model.Preferences.PollingFrequency.ToString())');
         });
     </script>
 

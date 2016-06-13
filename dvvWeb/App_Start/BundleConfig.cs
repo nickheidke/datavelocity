@@ -53,7 +53,7 @@ namespace dvvWeb
 
             bundles.Add(new ScriptBundle("~/bundles/my").Include(
                         "~/Scripts/my/Main.js",
-                        "~/Scripts/my/Views/Graphing.js",
+                        "~/Scripts/my/Views/Dashboard.js",
                         "~/Scripts/my/Views/Config.js",
                         "~/Scripts/my/Common/Utilities.js"));
         }

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace dvvWeb.Controllers
 {
-    public class GraphingController : Controller
+    public class DashboardController : Controller
     {
         //
         // GET: /Graphing/
