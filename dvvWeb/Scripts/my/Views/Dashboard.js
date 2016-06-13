@@ -21,11 +21,12 @@ my.Views.Dashboard = (function ($) {
 
         $('#stopButton').prop('disabled', false);
         $('#startButton').prop('disabled', true); 
-
+        $('#resetButton').prop('disabled', true);
 
         $('#stopButton').click(function () {
             $('#stopButton').prop('disabled', true);
             $('#startButton').prop('disabled', false);
+            $('#resetButton').prop('disabled', false);
 
             chart.server.stop();
         });
@@ -33,8 +34,34 @@ my.Views.Dashboard = (function ($) {
         $('#startButton').click(function () {
             $('#stopButton').prop('disabled', false);
             $('#startButton').prop('disabled', true);
+            $('#resetButton').prop('disabled', true);
 
-            chart.server.start(_serverName, _dbName, _numberOfPoints, _pollingFrequency);
+            runStart = moment();
+            $("#runStartTime").val(runStart.format("YYYY-MM-DD h:mm:ss a"));
+
+            chart.server.start(_serverName, _dbName, _numberOfPoints, _pollingFrequency);            
+        });
+
+        $('#resetButton').click(function () {
+            $('#stopButton').prop('disabled', true);
+            $('#startButton').prop('disabled', false);
+            $('#resetButton').prop('disabled', false);
+
+            var resetOptions = {
+                start: moment(),
+                end: moment() + 360000
+            };
+
+            totalsDataset = new vis.DataSet();
+            rpsDataset = new vis.DataSet();
+
+            totalsContainer.innerHTML = "";
+            rpsContainer.innerHTML = "";
+
+            totalsGraph2D = new vis.Graph2d(totalsContainer, totalsDataset, resetOptions);
+            rpsGraph2D = new vis.Graph2d(rpsContainer, rpsDataset, resetOptions);
+
+            $(':text').val("");
         });
 
         // Reference the auto-generated proxy for the hub.  
