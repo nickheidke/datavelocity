@@ -29,10 +29,12 @@ my.Views.Graphing = (function ($) {
             var newData = [];
             newData.push({ x: now, y: graphingModel.CurrentRowCount });
             totalsGraph2D.itemsData.add(newData);
+            totalsGraph2D.setWindow(null, now + 360000);
 
             newData = [];
             newData.push({ x: now, y: graphingModel.CurrentRPS });
             rpsGraph2D.itemsData.add(newData);
+            rpsGraph2D.setWindow(null, now + 360000);
 
             $("#runStartTime").val(runStart.format("YYYY-MM-DD h:mm:ss a"));
             $("#lastUpdated").val(now.format("YYYY-MM-DD h:mm:ss a"));
