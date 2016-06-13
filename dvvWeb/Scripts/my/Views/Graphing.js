@@ -19,6 +19,24 @@ my.Views.Graphing = (function ($) {
         var totalsGraph2D = new vis.Graph2d(totalsContainer, totalsDataset, options);
         var rpsGraph2D = new vis.Graph2d(rpsContainer, rpsDataset, options);
 
+        $('#stopButton').prop('disabled', false);
+        $('#startButton').prop('disabled', true); 
+
+
+        $('#stopButton').click(function () {
+            $('#stopButton').prop('disabled', true);
+            $('#startButton').prop('disabled', false);
+
+            chart.server.stop();
+        });
+
+        $('#startButton').click(function () {
+            $('#stopButton').prop('disabled', false);
+            $('#startButton').prop('disabled', true);
+
+            chart.server.start(_serverName, _dbName, _numberOfPoints, _pollingFrequency);
+        });
+
         // Reference the auto-generated proxy for the hub.  
         var chart = $.connection.chartHub;
 
@@ -29,12 +47,12 @@ my.Views.Graphing = (function ($) {
             var newData = [];
             newData.push({ x: now, y: graphingModel.CurrentRowCount });
             totalsGraph2D.itemsData.add(newData);
-            totalsGraph2D.setWindow(null, now + 360000);
+            totalsGraph2D.setWindow(null, now + 36000);
 
             newData = [];
             newData.push({ x: now, y: graphingModel.CurrentRPS });
             rpsGraph2D.itemsData.add(newData);
-            rpsGraph2D.setWindow(null, now + 360000);
+            rpsGraph2D.setWindow(null, now + 36000);
 
             $("#runStartTime").val(runStart.format("YYYY-MM-DD h:mm:ss a"));
             $("#lastUpdated").val(now.format("YYYY-MM-DD h:mm:ss a"));

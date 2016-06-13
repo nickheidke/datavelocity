@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dvvWeb.Hubs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -27,6 +28,11 @@ namespace dvvWeb
         protected void Application_Error(object sender, EventArgs e)
         {
             Exception ex = Server.GetLastError();
+        }
+
+        protected void Application_End()
+        {
+            new ChartHub().Stop();
         }
     }
 }

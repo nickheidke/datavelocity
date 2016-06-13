@@ -18,70 +18,28 @@ namespace dvvWeb.Hubs
 {
     public class ChartHub : Hub
     {
-        CancellationTokenSource tokenSource;
-        CancellationToken ct;
+        
         public void Start(string serverName, string dbName, string numberOfPoints, string pollingFrequency)
         {
-            ConfigModel config = new ConfigModel();
+            var singleton = ChartHubSingleton.Instance;
 
-            tokenSource = new CancellationTokenSource();
-            ct = tokenSource.Token;
-
-            config.Servername = HttpUtility.UrlDecode(serverName);
-            config.DbName = HttpUtility.UrlDecode(dbName);
-            config.Preferences.NumberOfPoints = int.Parse(numberOfPoints);
-            config.Preferences.PollingFrequency = int.Parse(pollingFrequency);
-
-            dvvGraphingModel graphingModel = new dvvGraphingModel();
-
-            dvvGraphingHelper graphingHelper = new dvvGraphingHelper(graphingModel, config.Servername, config.DbName);
-
-            graphingModel = graphingHelper.Tick(config.Preferences);
-
-            var identity = WindowsIdentity.GetCurrent();
-
-            Task.Run(() => workItemAsync(ct, graphingModel, graphingHelper, config, identity));
-
-            /*while (true)
-            {
-                Clients.Caller.addPointToChart(JsonConvert.SerializeObject(graphingModel));
-                System.Threading.Thread.Sleep(config.Preferences.PollingFrequency * 1000);
-                graphingModel = graphingHelper.Tick(config.Preferences);
-            }
-             * */
+            singleton.Start(serverName, dbName, numberOfPoints, pollingFrequency, this);
         }
 
         public void Stop()
         {
-            tokenSource.Cancel();
+            var singleton = ChartHubSingleton.Instance;
+
+            singleton.Stop(WindowsIdentity.GetCurrent().User.Value);
         }
 
-
-        private async Task<CancellationToken> workItemAsync(CancellationToken ct, dvvGraphingModel graphingModel, dvvGraphingHelper graphingHelper, ConfigModel configModel, WindowsIdentity identity)
+        public void AddPoint(dvvGraphingModel model)
         {
-            await addLogAsync(ct, graphingModel, graphingHelper, configModel, identity);
-            return ct;
+            Clients.Caller.addPointToChart(JsonConvert.SerializeObject(model));
+
         }
 
-        private async Task<CancellationToken> addLogAsync(CancellationToken ct, dvvGraphingModel graphingModel, dvvGraphingHelper graphingHelper, ConfigModel configModel, WindowsIdentity identity)
-        {
 
-            try
-            {
-                while(!ct.IsCancellationRequested)
-                {
-                    identity.Impersonate();
-                    Clients.Caller.addPointToChart(JsonConvert.SerializeObject(graphingModel));
-                    System.Threading.Thread.Sleep(configModel.Preferences.PollingFrequency * 1000);
-                    graphingModel = graphingHelper.Tick(configModel.Preferences);
-
-                }
-            }
-            catch (TaskCanceledException tce)
-            {
-                Trace.TraceError("Caught TaskCanceledException - signaled cancellation " + tce.Message);
-            }
-            return ct;
-        }
+        
     }
 }
