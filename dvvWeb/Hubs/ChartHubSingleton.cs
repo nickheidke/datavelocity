@@ -40,7 +40,7 @@ public sealed class ChartHubSingleton
     public void Start(string serverName, string dbName, string numberOfPoints, string pollingFrequency, ChartHub hub)
     {
         ConfigModel config = new ConfigModel();
-        CancellationTokenSource tokenSource;
+        CancellationTokenSource tokenSource, tokenSourceForCancel;
         CancellationToken ct;
 
         tokenSource = new CancellationTokenSource();
@@ -59,9 +59,19 @@ public sealed class ChartHubSingleton
 
         var identity = WindowsIdentity.GetCurrent();
 
-        cancelsDictionary.TryAdd(identity.User.Value, tokenSource);
+        if (cancelsDictionary.TryGetValue(identity.User.Value, out tokenSourceForCancel))
+        {
+            if (tokenSourceForCancel != null)
+            {
+                tokenSourceForCancel.Cancel();
+            }
+            cancelsDictionary.TryRemove(identity.User.Value, out tokenSourceForCancel);
+        }
 
-        Task.Run(() => workItemAsync(ct, graphingModel, graphingHelper, config, identity, hub));
+        if (cancelsDictionary.TryAdd(identity.User.Value, tokenSource))
+        {
+            Task.Run(() => workItemAsync(ct, graphingModel, graphingHelper, config, identity, hub));
+        }        
 
     }
 
@@ -95,7 +105,7 @@ public sealed class ChartHubSingleton
     public void Stop(string userId)
     {
         CancellationTokenSource tokenSource;
-        if(cancelsDictionary.TryGetValue(userId, out tokenSource))
+        while(cancelsDictionary.TryGetValue(userId, out tokenSource))
         {
             tokenSource.Cancel();
             cancelsDictionary.TryRemove(userId,  out tokenSource);

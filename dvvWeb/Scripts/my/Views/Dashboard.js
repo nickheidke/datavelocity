@@ -88,7 +88,7 @@ my.Views.Dashboard = (function ($) {
             var elem = document.getElementById("currentRowCount");
             elem.innerHTML = "(" + my.Common.Utilities.commafy(graphingModel.CurrentRowCount.toFixed(0).toLocaleString()) + " currently)";
             elem = document.getElementById("currentRPS");
-            elem.innerHTML = "(" + my.Common.Utilities.commafy(graphingModel.CurrentRPS.toFixed(0).toLocaleString()) + " currently)";
+            elem.innerHTML = "(" + my.Common.Utilities.commafy(graphingModel.CurrentRPS.toFixed(1).toLocaleString()) + " currently)";
 
             $("#maxRowCount").val(my.Common.Utilities.commafy(graphingModel.MaxRowCount.toFixed(0).toLocaleString()));
             $("#minRowCount").val(my.Common.Utilities.commafy(graphingModel.MinRowCount.toFixed(0).toLocaleString()));
