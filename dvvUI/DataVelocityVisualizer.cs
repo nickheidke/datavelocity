@@ -88,7 +88,7 @@ namespace DataMovementAnalyzer
         {
             try
             {
-                _objGraphingModel = _objGraphingController.Tick(_objPrefsModel);             
+                _objGraphingModel = _objGraphingController.Tick(_objPrefsModel);
 
                 objAllTablesPane = zgcAllTables.GraphPane;
 
@@ -101,13 +101,15 @@ namespace DataMovementAnalyzer
 
                     if (ci != null)
                     {
-                        ci.AddPoint((double)new XDate(dtNow), Int32.Parse(row["RowCnt"].ToString()));
+                        ci.AddPoint((double) new XDate(dtNow), Int32.Parse(row["RowCnt"].ToString()));
                     }
                     else
                     {
-                        objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(_objPrefsModel.NumberOfPoints), Color.Red, SymbolType.Default); ;
+                        objAllTablesPane.AddCurve(row["TableName"].ToString(),
+                            new RollingPointPairList(_objPrefsModel.NumberOfPoints), Color.Red, SymbolType.Default);
+                        ;
                         ci = objAllTablesPane.CurveList.Find(x => x.Label.Text == row["TableName"].ToString());
-                        ci.AddPoint((double)new XDate(dtNow), Int32.Parse(row["RowCnt"].ToString()));
+                        ci.AddPoint((double) new XDate(dtNow), Int32.Parse(row["RowCnt"].ToString()));
                     }
                 }
 
@@ -119,12 +121,13 @@ namespace DataMovementAnalyzer
                     dgvCustom.DataSource = _getCustomQueryResults(txtCustomQuery.Text);
                 }
 
-                objTotalRowsPairList.Add((double)new XDate(dtNow), _objGraphingModel.CurrentRowCount);
+                objTotalRowsPairList.Add((double) new XDate(dtNow), _objGraphingModel.CurrentRowCount);
 
-                lblRowCount.Text = String.Format("Current Row Count: {0}", _objGraphingModel.CurrentRowCount.ToString("N0"));
+                lblRowCount.Text = String.Format("Current Row Count: {0}",
+                    _objGraphingModel.CurrentRowCount.ToString("N0"));
 
 
-                objRPSPairList.Add((double)new XDate(dtNow), _objGraphingModel.CurrentRPS);
+                objRPSPairList.Add((double) new XDate(dtNow), _objGraphingModel.CurrentRPS);
 
                 lblRPS.Text = String.Format("Current Rows/sec: {0}", _objGraphingModel.CurrentRPS.ToString("N1"));
 
@@ -140,12 +143,14 @@ namespace DataMovementAnalyzer
 
                 if (_objGraphingModel.CurrentRowCount >= _objGraphingModel.MaxRowCount)
                 {
-                    lblMaxRowCount.Text = String.Format("Max Row Count: {0}", _objGraphingModel.MaxRowCount.ToString("N0"));
+                    lblMaxRowCount.Text = String.Format("Max Row Count: {0}",
+                        _objGraphingModel.MaxRowCount.ToString("N0"));
                 }
 
                 if (_objGraphingModel.CurrentRowCount <= _objGraphingModel.MinRowCount)
                 {
-                    lblMinRowCount.Text = String.Format("Min Row Count: {0}", _objGraphingModel.MinRowCount.ToString("N0"));
+                    lblMinRowCount.Text = String.Format("Min Row Count: {0}",
+                        _objGraphingModel.MinRowCount.ToString("N0"));
                 }
 
                 _updateGraphs();
@@ -153,9 +158,10 @@ namespace DataMovementAnalyzer
             }
             catch (Exception ex)
             {
-                objTimer.Stop();
+                Stop();
                 displayError("Exception thrown: " + ex.Message);
-            }            
+                throw ex;
+            }       
         }
 
         private void editConnectionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -171,6 +177,11 @@ namespace DataMovementAnalyzer
 
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Stop();
+        }
+
+        private void Stop()
+        {
             _objGraphingController.Stop();
             objTimer.Stop();
             startToolStripMenuItem.Enabled = true;
@@ -179,7 +190,10 @@ namespace DataMovementAnalyzer
             preferencesToolStripMenuItem.Enabled = true;
             editConnectionToolStripMenuItem.Enabled = true;
 
+            this.Refresh();
             _refreshBindings();
+
+            Application.DoEvents();
         }
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
@@ -190,22 +204,32 @@ namespace DataMovementAnalyzer
             }
             else
             {
-                this.objTimer_Tick(null, null);
-
-
-                objTimer.Start();
-                stopToolStripMenuItem.Enabled = true;
-                startToolStripMenuItem.Enabled = false;
-                resetToolStripMenuItem.Enabled = false;
-                preferencesToolStripMenuItem.Enabled = false;
-                editConnectionToolStripMenuItem.Enabled = false;
-
-                DataTable dt = _objGraphingController.getAllRowCounts(false);
-                for (int i = 0; i < 5; i++)
+                try
                 {
-                    DataRow row = dt.Rows[i];
+                    this.objTimer_Tick(null, null);
 
-                    objAllTablesPane.AddCurve(row["TableName"].ToString(), new RollingPointPairList(_objPrefsModel.NumberOfPoints), _randomColorForInt(i), SymbolType.Default); ;
+
+                    objTimer.Start();
+                    stopToolStripMenuItem.Enabled = true;
+                    startToolStripMenuItem.Enabled = false;
+                    resetToolStripMenuItem.Enabled = false;
+                    preferencesToolStripMenuItem.Enabled = false;
+                    editConnectionToolStripMenuItem.Enabled = false;
+
+                    DataTable dt = _objGraphingController.getAllRowCounts(false);
+                    for (int i = 0; i < 5; i++)
+                    {
+                        DataRow row = dt.Rows[i];
+
+                        objAllTablesPane.AddCurve(row["TableName"].ToString(),
+                            new RollingPointPairList(_objPrefsModel.NumberOfPoints), _randomColorForInt(i),
+                            SymbolType.Default);
+                        ;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    
                 }
             }
         }
@@ -464,17 +488,21 @@ namespace DataMovementAnalyzer
         {
             try
             {
-
                 txtCustomQuery.LoadFile(QUERY_FILE_PATH, RichTextBoxStreamType.RichText);
             }
             catch (ArgumentException aex)
             {
-                txtCustomQuery.LoadFile(QUERY_FILE_PATH, RichTextBoxStreamType.PlainText);
+                try
+                {
+                    txtCustomQuery.LoadFile(QUERY_FILE_PATH, RichTextBoxStreamType.PlainText);
+                }
+                catch (Exception ex)
+                {
+                    Stop();
+                    displayError(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                displayError(ex.Message);
-            }
+            
         }
 
 
