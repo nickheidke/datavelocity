@@ -94,22 +94,26 @@ namespace DataMovementAnalyzer
 
                 DateTime dtNow = DateTime.Now;
 
-                for (int i = 0; i < 5; i++)
+                if (_objPrefsModel.IncludeTop5Graph)
                 {
-                    DataRow row = _objGraphingModel.RowCounts.Rows[i];
-                    CurveItem ci = objAllTablesPane.CurveList.Find(x => x.Label.Text == row["TableName"].ToString());
 
-                    if (ci != null)
+                    for (int i = 0; i < 1; i++)
                     {
-                        ci.AddPoint((double) new XDate(dtNow), Int32.Parse(row["RowCnt"].ToString()));
-                    }
-                    else
-                    {
-                        objAllTablesPane.AddCurve(row["TableName"].ToString(),
-                            new RollingPointPairList(_objPrefsModel.NumberOfPoints), Color.Red, SymbolType.Default);
-                        ;
-                        ci = objAllTablesPane.CurveList.Find(x => x.Label.Text == row["TableName"].ToString());
-                        ci.AddPoint((double) new XDate(dtNow), Int32.Parse(row["RowCnt"].ToString()));
+                        DataRow row = _objGraphingModel.RowCounts.Rows[i];
+                        CurveItem ci = objAllTablesPane.CurveList.Find(x => x.Label.Text == row["TableName"].ToString());
+
+                        if (ci != null)
+                        {
+                            ci.AddPoint((double) new XDate(dtNow), Int32.Parse(row["RowCnt"].ToString()));
+                        }
+                        else
+                        {
+                            objAllTablesPane.AddCurve(row["TableName"].ToString(),
+                                new RollingPointPairList(_objPrefsModel.NumberOfPoints), Color.Red, SymbolType.Default);
+                            ;
+                            ci = objAllTablesPane.CurveList.Find(x => x.Label.Text == row["TableName"].ToString());
+                            ci.AddPoint((double) new XDate(dtNow), Int32.Parse(row["RowCnt"].ToString()));
+                        }
                     }
                 }
 
@@ -249,6 +253,7 @@ namespace DataMovementAnalyzer
             config.AppSettings.Settings["NumberOfPoints"].Value = Prefs.NumberOfPoints.ToString();
             config.AppSettings.Settings["PollingFrequency"].Value = Prefs.PollingFrequency.ToString();
             config.AppSettings.Settings["RunCustomQuery"].Value = Prefs.RunCustomQuery.ToString();
+            config.AppSettings.Settings["ShowTop5"].Value = Prefs.RunCustomQuery.ToString();
 
             if (Prefs.bTotalRowsLinear)
             {
@@ -294,6 +299,7 @@ namespace DataMovementAnalyzer
             Prefs.NumberOfPoints = int.Parse(config.AppSettings.Settings["NumberOfPoints"].Value);
             Prefs.PollingFrequency = int.Parse(config.AppSettings.Settings["PollingFrequency"].Value);
             Prefs.RunCustomQuery = bool.Parse(config.AppSettings.Settings["RunCustomQuery"].Value);
+            Prefs.IncludeTop5Graph = bool.Parse(config.AppSettings.Settings["ShowTop5"].Value);
 
             if (config.AppSettings.Settings["TotalRowsScale"].Value == "Linear")
             {

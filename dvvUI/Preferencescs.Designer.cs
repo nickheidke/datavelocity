@@ -48,6 +48,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdbTotalRowsLog = new System.Windows.Forms.RadioButton();
             this.rdbTotalRowsLinear = new System.Windows.Forms.RadioButton();
+            this.chkTop5 = new System.Windows.Forms.CheckBox();
             this.tabPrefs.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.Graphing.SuspendLayout();
@@ -112,7 +113,7 @@
             // chkRunCustomQuery
             // 
             this.chkRunCustomQuery.AutoSize = true;
-            this.chkRunCustomQuery.Location = new System.Drawing.Point(61, 66);
+            this.chkRunCustomQuery.Location = new System.Drawing.Point(61, 67);
             this.chkRunCustomQuery.Name = "chkRunCustomQuery";
             this.chkRunCustomQuery.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkRunCustomQuery.Size = new System.Drawing.Size(115, 17);
@@ -132,6 +133,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.chkTop5);
             this.tabPage1.Controls.Add(this.txtPollingFrequency);
             this.tabPage1.Controls.Add(this.chkRunCustomQuery);
             this.tabPage1.Controls.Add(this.txtNumberOfPoints);
@@ -258,7 +260,19 @@
             this.rdbTotalRowsLinear.UseVisualStyleBackColor = true;
             this.rdbTotalRowsLinear.CheckedChanged += new System.EventHandler(this.rdbTotalRowsLinear_CheckedChanged);
             // 
-            // frmPreferencescs
+            // chkTop5
+            // 
+            this.chkTop5.AutoSize = true;
+            this.chkTop5.Location = new System.Drawing.Point(53, 90);
+            this.chkTop5.Name = "chkTop5";
+            this.chkTop5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.chkTop5.Size = new System.Drawing.Size(123, 17);
+            this.chkTop5.TabIndex = 7;
+            this.chkTop5.Text = "Show \'Top 5\' graphs";
+            this.chkTop5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkTop5.UseVisualStyleBackColor = true;
+            // 
+            // Preferencescs
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,7 +288,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(240, 100);
-            this.Name = "frmPreferencescs";
+            this.Name = "Preferencescs";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -316,5 +330,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdbTotalRowsLog;
         private System.Windows.Forms.RadioButton rdbTotalRowsLinear;
+        private System.Windows.Forms.CheckBox chkTop5;
     }
 }

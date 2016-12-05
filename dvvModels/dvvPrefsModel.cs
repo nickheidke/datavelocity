@@ -15,6 +15,7 @@ namespace dvvModels
         private bool _bRPSScaleLog;
         private bool _bTopColumnsScaleLinear;
         private bool _bTopColumnsScaleLog;
+        private bool _bIncludeTop5Graphs;
 
         private int _iNumberofPoints;
         private int _iPollingFrequency;
@@ -81,6 +82,12 @@ namespace dvvModels
         {
             get { return _bCustomQuery; }
             set { _bCustomQuery = value; }
+        }
+
+        public bool IncludeTop5Graph
+        {
+            get { return _bIncludeTop5Graphs; }
+            set { _bIncludeTop5Graphs = value; }
         }
     }
 }

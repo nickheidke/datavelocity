@@ -69,6 +69,12 @@ namespace DataMovementAnalyzer
                                 false,
                                 DataSourceUpdateMode.OnPropertyChanged);
 
+            chkTop5.DataBindings.Add("Checked",
+                                objModel,
+                                "IncludeTop5Graph",
+                                false,
+                                DataSourceUpdateMode.OnPropertyChanged);
+
             rdbTotalRowsLinear.DataBindings.Add("Checked",
                                 objModel,
                                 "bTotalRowsLinear",
